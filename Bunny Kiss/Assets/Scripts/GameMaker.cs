@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class GameMaker : MonoBehaviour {
@@ -8,10 +9,11 @@ public class GameMaker : MonoBehaviour {
     private int YSIZE = 5;
     private int[,] values;
     public GameObject spacefab;
+    public GameObject bunny1;
+    public GameObject bunny2;
 
 	// Use this for initialization
 	void Start () {
-
 
         // MAKE A RANDOM LEVEL
         values = new int[XSIZE, YSIZE];
@@ -29,7 +31,10 @@ public class GameMaker : MonoBehaviour {
         {
             for (int j = 0; j < values.GetLength(1); j++)
             {
-                Instantiate(spacefab, new Vector3(i, j, 0), Quaternion.identity);
+                GameObject space = Instantiate<GameObject>(spacefab, new Vector3(i, j, 0), Quaternion.identity);
+                Space script = space.GetComponent<Space>();
+                script.value = values[i, j];
+                script.text.GetComponent<TextMeshPro>().text = "" + script.value;
             }
         }
 	}

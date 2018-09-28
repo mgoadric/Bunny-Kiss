@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Space : MonoBehaviour {
 
+    public GameObject bunny;
+    public int value;
+    public GameObject text;
+
 	// Use this for initialization
 	void Start () {
 		
