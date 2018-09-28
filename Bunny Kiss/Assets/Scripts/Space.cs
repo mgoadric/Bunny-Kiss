@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Space : MonoBehaviour {
 
-    public GameObject bunny;
+    public Challenge challenge;
     public int value;
+    public int x;
+    public int y;
     public GameObject text;
 
 	// Use this for initialization
@@ -17,4 +19,9 @@ public class Space : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    void OnMouseDown()
+    {
+        Debug.Log("" + x + "," + y + ":" + value);
+    }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class GameMaker : MonoBehaviour {
+public class Challenge : MonoBehaviour {
 
     public static readonly int XSIZE = 5;
     public static readonly int YSIZE = 5;
@@ -11,6 +11,8 @@ public class GameMaker : MonoBehaviour {
     public GameObject spacefab;
     public GameObject bunny1;
     public GameObject bunny2;
+
+    public List<Bunny> boardBunnies;
 
 	// Use this for initialization
 	void Start () {
@@ -36,21 +38,25 @@ public class GameMaker : MonoBehaviour {
                 GameObject space = Instantiate<GameObject>(spacefab, new Vector3(i - w / 2, j - h / 2, 0), Quaternion.identity);
                 Space script = space.GetComponent<Space>();
                 script.value = values[i, j];
+                script.x = i;
+                script.y = j;
                 script.text.GetComponent<TextMeshPro>().text = "" + script.value;
+                script.challenge = this;
             }
         }
 
         // PUT THE BUNNIES ON THE BOARD
+        boardBunnies = new List<Bunny>();
         MakeBunny(0, 0, bunny1);
         MakeBunny(XSIZE - 1, YSIZE - 1, bunny2);
     }
 
     void MakeBunny(int x, int y, GameObject bun)
     {
-        GameObject bun1 = Instantiate<GameObject>(bun);
-        Bunny b = bun1.GetComponent<Bunny>();
+        GameObject bunny = Instantiate<GameObject>(bun);
+        Bunny b = bunny.GetComponent<Bunny>();
         b.MoveTo(x, y);
-
+        boardBunnies.Add(b);
     }
 
     // Update is called once per frame

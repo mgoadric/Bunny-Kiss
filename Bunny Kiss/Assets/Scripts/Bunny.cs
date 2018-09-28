@@ -23,6 +23,11 @@ public class Bunny : MonoBehaviour {
         this.y = y;
 
         // SLERP IT LATER, ANIMATE FOR CUTE JUMPING
-        gameObject.transform.position = new Vector3(x - GameMaker.XSIZE / 2, y - GameMaker.YSIZE / 2, 0);
+        gameObject.transform.position = new Vector3(x - Challenge.XSIZE / 2, y - Challenge.YSIZE / 2, -1);
+    }
+
+    public bool Equals(Bunny b)
+    {
+        return x == b.x && y == b.y;
     }
 }
