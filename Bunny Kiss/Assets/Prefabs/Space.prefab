@@ -19,6 +19,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4430703306690160}
+  - component: {fileID: 114913685046966820}
   m_Layer: 0
   m_Name: Space
   m_TagString: Untagged
@@ -244,6 +245,20 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   m_maskType: 0
+--- !u!114 &114913685046966820
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1214494948467134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cec13aac729a38418b34834ca599e9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bunny: {fileID: 0}
+  value: 0
+  text: {fileID: 1787502004226544}
 --- !u!212 &212512355983156284
 SpriteRenderer:
   m_ObjectHideFlags: 1

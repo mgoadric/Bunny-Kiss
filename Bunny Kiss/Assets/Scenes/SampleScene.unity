@@ -231,3 +231,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spacefab: {fileID: 1214494948467134, guid: 6ad669aa61c1f2848a3a752171ae50d1, type: 2}
+  bunny1: {fileID: 1379848526708568, guid: 5c45b27793b234b48821773ba1d62689, type: 2}
+  bunny2: {fileID: 1248460286047570, guid: 8e1dc0c053ee45241af3257de76558fb, type: 2}

@@ -27,20 +27,26 @@ public class GameMaker : MonoBehaviour {
         }
 
         // MAKE THE OBJECTS BASED ON THE LEVEL
-        for (int i = 0; i < values.GetLength(0); i++)
+        int w = values.GetLength(0);
+        int h = values.GetLength(1);
+        for (int i = 0; i < w; i++)
         {
-            for (int j = 0; j < values.GetLength(1); j++)
+            for (int j = 0; j < h; j++)
             {
-                GameObject space = Instantiate<GameObject>(spacefab, new Vector3(i, j, 0), Quaternion.identity);
+                GameObject space = Instantiate<GameObject>(spacefab, new Vector3(i - w / 2, j - h / 2, 0), Quaternion.identity);
                 Space script = space.GetComponent<Space>();
                 script.value = values[i, j];
                 script.text.GetComponent<TextMeshPro>().text = "" + script.value;
             }
         }
-	}
-	
-	// Update is called once per frame
-	void Update () {
+
+        // PUT THE BUNNIES ON THE BOARD
+        Instantiate<GameObject>(bunny1, new Vector3(w / 2, h / 2, 0), Quaternion.identity);
+        Instantiate<GameObject>(bunny2, new Vector3(-w / 2, -h / 2, 0), Quaternion.identity);
+    }
+
+    // Update is called once per frame
+    void Update () {
 		
 	}
 }
