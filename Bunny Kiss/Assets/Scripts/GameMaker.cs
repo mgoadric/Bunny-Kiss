@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class GameMaker : MonoBehaviour {
 
-    private int XSIZE = 5;
-    private int YSIZE = 5;
+    public static readonly int XSIZE = 5;
+    public static readonly int YSIZE = 5;
     private int[,] values;
     public GameObject spacefab;
     public GameObject bunny1;
@@ -41,8 +41,16 @@ public class GameMaker : MonoBehaviour {
         }
 
         // PUT THE BUNNIES ON THE BOARD
-        Instantiate<GameObject>(bunny1, new Vector3(w / 2, h / 2, 0), Quaternion.identity);
-        Instantiate<GameObject>(bunny2, new Vector3(-w / 2, -h / 2, 0), Quaternion.identity);
+        MakeBunny(0, 0, bunny1);
+        MakeBunny(XSIZE - 1, YSIZE - 1, bunny2);
+    }
+
+    void MakeBunny(int x, int y, GameObject bun)
+    {
+        GameObject bun1 = Instantiate<GameObject>(bun);
+        Bunny b = bun1.GetComponent<Bunny>();
+        b.MoveTo(x, y);
+
     }
 
     // Update is called once per frame
