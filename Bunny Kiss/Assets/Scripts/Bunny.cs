@@ -14,9 +14,8 @@ public class Bunny : MonoBehaviour {
     public int destx;
     public int desty;
 
-    public float speed = 1.0f;
+    public float speed = 3.0f;
     public float startTime;
-    public float journeyLength;
 
     public BunnyState state = BunnyState.REST;
 
@@ -35,7 +34,7 @@ public class Bunny : MonoBehaviour {
             float distCovered = (Time.time - startTime) * speed;
 
             // Fraction of journey completed = current distance divided by total distance.
-            float fracJourney = distCovered / journeyLength;
+            float fracJourney = distCovered;
 
             gameObject.transform.position = Vector3.Lerp(new Vector3(x - Challenge.XSIZE / 2, y - Challenge.YSIZE / 2, -1),
                 new Vector3(destx - Challenge.XSIZE / 2, desty - Challenge.YSIZE / 2, -1), fracJourney);
@@ -61,13 +60,8 @@ public class Bunny : MonoBehaviour {
     {
         if (state == BunnyState.READY)
         {
-
             state = BunnyState.MOVING;
             startTime = Time.time;
-
-            journeyLength = Vector3.Distance(new Vector3(x - Challenge.XSIZE / 2, y - Challenge.YSIZE / 2, -1),
-                new Vector3(destx - Challenge.XSIZE / 2, desty - Challenge.YSIZE / 2, -1));
-
         }
     }
 
