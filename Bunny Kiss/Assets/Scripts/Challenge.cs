@@ -1,12 +1,12 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
 public class Challenge : MonoBehaviour {
 
-    public static readonly int XSIZE = 5;
-    public static readonly int YSIZE = 5;
+    public static readonly int XSIZE = 8;
+    public static readonly int YSIZE = 8;
     private int[,] values;
     public GameObject spacefab;
     public GameObject bunny1;
@@ -24,7 +24,7 @@ public class Challenge : MonoBehaviour {
         {
             for (int j = 0; j < YSIZE; j++)
             {
-                values[i, j] = Random.Range(0, 5);
+                values[i, j] = Random.Range(0, 6);
             }
         }
 
@@ -40,7 +40,15 @@ public class Challenge : MonoBehaviour {
                 script.value = values[i, j];
                 script.x = i;
                 script.y = j;
-                script.text.GetComponent<TextMeshPro>().text = "" + script.value;
+
+                if (script.value == 0)
+                {
+                    script.text.GetComponent<TextMeshPro>().enabled = false;
+                } else
+                {
+                    script.text.GetComponent<TextMeshPro>().text = "" + script.value;
+                }
+                
                 script.challenge = this;
             }
         }
