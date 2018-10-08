@@ -2,13 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum BunnyState
+{
+    REST, READY, MOVING
+}
+
 public class Bunny : MonoBehaviour {
 
     public int x;
     public int y;
     public int destx;
     public int desty;
-    public bool ready;
+    public BunnyState state = BunnyState.REST;
 
 	// Use this for initialization
 	void Start () {
@@ -24,16 +29,16 @@ public class Bunny : MonoBehaviour {
     {
         this.destx = destx;
         this.desty = desty;
-        ready = true;
+        state = BunnyState.READY;
     }
 
     public void Move()
     {
-        if (ready)
+        if (state == BunnyState.READY)
         {
             this.x = destx;
             this.y = desty;
-            ready = false;
+            state = BunnyState.REST;
 
             // SLERP IT LATER, ANIMATE FOR CUTE JUMPING
             gameObject.transform.position = new Vector3(x - Challenge.XSIZE / 2, y - Challenge.YSIZE / 2, -1);
