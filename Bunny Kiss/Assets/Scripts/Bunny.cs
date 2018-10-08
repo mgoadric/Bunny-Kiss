@@ -6,6 +6,9 @@ public class Bunny : MonoBehaviour {
 
     public int x;
     public int y;
+    public int destx;
+    public int desty;
+    public bool ready;
 
 	// Use this for initialization
 	void Start () {
@@ -17,13 +20,24 @@ public class Bunny : MonoBehaviour {
 		
 	}
 
-    public void MoveTo(int x, int y)
+    public void QueueMove(int destx, int desty)
     {
-        this.x = x;
-        this.y = y;
+        this.destx = destx;
+        this.desty = desty;
+        ready = true;
+    }
 
-        // SLERP IT LATER, ANIMATE FOR CUTE JUMPING
-        gameObject.transform.position = new Vector3(x - Challenge.XSIZE / 2, y - Challenge.YSIZE / 2, -1);
+    public void Move()
+    {
+        if (ready)
+        {
+            this.x = destx;
+            this.y = desty;
+            ready = false;
+
+            // SLERP IT LATER, ANIMATE FOR CUTE JUMPING
+            gameObject.transform.position = new Vector3(x - Challenge.XSIZE / 2, y - Challenge.YSIZE / 2, -1);
+        }
     }
 
     public bool Equals(Bunny b)

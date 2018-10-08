@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -63,7 +63,8 @@ public class Challenge : MonoBehaviour {
     {
         GameObject bunny = Instantiate<GameObject>(bun);
         Bunny b = bunny.GetComponent<Bunny>();
-        b.MoveTo(x, y);
+        b.QueueMove(x, y);
+        b.Move();
         boardBunnies.Add(b);
     }
 

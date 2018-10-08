@@ -20,24 +20,83 @@ public class Space : MonoBehaviour {
 		
 	}
 
-    void BunnyCheck(Bunny b, int lookx, int looky)
+    void BunnyCheck(Bunny b, Bunny ob, int dx, int dy)
     {
-        if (b.x == lookx && b.y == looky)
+        if (dy == 0)
         {
-            b.MoveTo(x, y);
+            if (dx > 0)
+            {
+                for (int j = x + 1; j <= x + dx; j++)
+                {
+                    if (ob.x == j && ob.y == y)
+                    {
+                        dx++;
+                        break;
+                    }
+                }
+            }
+            else if (dx < 0)
+            {
+                for (int j = x - 1; j >= x + dx; j--)
+                {
+                    if (ob.x == j && ob.y == y)
+                    {
+                        dx--;
+                        break;
+                    }
+                }
+            }
+        }
+        if (dx == 0)
+        {
+            if (dy > 0)
+            {
+                for (int j = y + 1; j <= y + dy; j++)
+                {
+                    if (ob.x == x && ob.y == j)
+                    {
+                        dy++;
+                        break;
+                    }
+                }
+            }
+            else if (dy < 0)
+            {
+                for (int j = y - 1; j >= y + dy; j--)
+                {
+                    if (ob.x == x && ob.y == j)
+                    {
+                        dy--;
+                        break;
+                    }
+                }
+            }
+        }
+
+        if (b.x == x + dx && b.y == y + dy)
+        {
+            b.QueueMove(x, y);
         }
     }
 
     void OnMouseDown()
     {
         Debug.Log("" + x + "," + y + ":" + value);
+        for (int i = 0; i < challenge.boardBunnies.Count; i++) 
+        {
+            Bunny b = challenge.boardBunnies[i];
+            Bunny ob = challenge.boardBunnies[1 - i];
+
+            // Look in all four directions for any bunnies that can jump.
+            BunnyCheck(b, ob, value, 0);
+            BunnyCheck(b, ob, -value, 0);
+            BunnyCheck(b, ob, 0, value);
+            BunnyCheck(b, ob, 0, -value);
+        }
+
         foreach (Bunny b in challenge.boardBunnies)
         {
-            // Look in all four directions for any bunnies that can jump.
-            BunnyCheck(b, x + value, y);
-            BunnyCheck(b, x - value, y);
-            BunnyCheck(b, x, y + value);
-            BunnyCheck(b, x, y - value);
+            b.Move();
         }
     }
 }
