@@ -63,8 +63,7 @@ public class Challenge : MonoBehaviour {
     {
         GameObject bunny = Instantiate<GameObject>(bun);
         Bunny b = bunny.GetComponent<Bunny>();
-        b.QueueMove(x, y);
-        b.Move();
+        b.StartAt(x, y);
         boardBunnies.Add(b);
     }
 

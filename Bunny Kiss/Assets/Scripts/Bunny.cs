@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,6 +13,11 @@ public class Bunny : MonoBehaviour {
     public int y;
     public int destx;
     public int desty;
+
+    public float speed = 1.0f;
+    public float startTime;
+    public float journeyLength;
+
     public BunnyState state = BunnyState.REST;
 
 	// Use this for initialization
@@ -22,6 +27,26 @@ public class Bunny : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+        if (state == BunnyState.MOVING)
+        {
+
+            // Distance moved = time * speed.
+            float distCovered = (Time.time - startTime) * speed;
+
+            // Fraction of journey completed = current distance divided by total distance.
+            float fracJourney = distCovered / journeyLength;
+
+            gameObject.transform.position = Vector3.Lerp(new Vector3(x - Challenge.XSIZE / 2, y - Challenge.YSIZE / 2, -1),
+                new Vector3(destx - Challenge.XSIZE / 2, desty - Challenge.YSIZE / 2, -1), fracJourney);
+
+            if (fracJourney > 1)
+            {
+                state = BunnyState.REST;
+                x = destx;
+                y = desty;
+            }
+        }
 		
 	}
 
@@ -36,13 +61,21 @@ public class Bunny : MonoBehaviour {
     {
         if (state == BunnyState.READY)
         {
-            this.x = destx;
-            this.y = desty;
-            state = BunnyState.REST;
 
-            // SLERP IT LATER, ANIMATE FOR CUTE JUMPING
-            gameObject.transform.position = new Vector3(x - Challenge.XSIZE / 2, y - Challenge.YSIZE / 2, -1);
+            state = BunnyState.MOVING;
+            startTime = Time.time;
+
+            journeyLength = Vector3.Distance(new Vector3(x - Challenge.XSIZE / 2, y - Challenge.YSIZE / 2, -1),
+                new Vector3(destx - Challenge.XSIZE / 2, desty - Challenge.YSIZE / 2, -1));
+
         }
+    }
+
+    public void StartAt(int x, int y)
+    {
+        this.x = x;
+        this.y = y;
+        gameObject.transform.position = new Vector3(x - Challenge.XSIZE / 2, y - Challenge.YSIZE / 2, -1);
     }
 
     public bool Equals(Bunny b)
