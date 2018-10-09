@@ -23,7 +23,7 @@ public class Space : MonoBehaviour {
 		
 	}
 
-    void BunnyCheck(Bunny b, Bunny ob, int dx, int dy)
+    void BunnyCheck(Bunny b, Bunny other, int dx, int dy)
     {
 
         int signx = Math.Sign(dx);
@@ -32,11 +32,19 @@ public class Space : MonoBehaviour {
             signx * (j - (x + dx)) <= 0 && signy * (k - (y + dy)) <= 0; 
             j += signx, k += signy)
         {
-            if (ob.x == j && ob.y == k)
+            if (other.x == j && other.y == k)
             {
                 dy += signy;
                 dx += signx;
-                break;
+            }
+
+            foreach (Obstacle ob in challenge.obstacles)
+            {
+                if (ob.x == j && ob.y == k)
+                {
+                    dy += signy;
+                    dx += signx;
+                }
             }
         }
 
@@ -56,13 +64,13 @@ public class Space : MonoBehaviour {
             Bunny b = challenge.boardBunnies[i];
             if (b.state == BunnyState.REST)
             {
-                Bunny ob = challenge.boardBunnies[1 - i];
+                Bunny other = challenge.boardBunnies[1 - i];
 
                 // Look in all four directions for any bunnies that can jump.
-                BunnyCheck(b, ob, value, 0);
-                BunnyCheck(b, ob, -value, 0);
-                BunnyCheck(b, ob, 0, value);
-                BunnyCheck(b, ob, 0, -value);
+                BunnyCheck(b, other, value, 0);
+                BunnyCheck(b, other, -value, 0);
+                BunnyCheck(b, other, 0, value);
+                BunnyCheck(b, other, 0, -value);
             }
         }
 
