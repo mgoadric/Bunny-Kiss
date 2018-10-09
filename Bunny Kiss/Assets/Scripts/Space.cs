@@ -23,30 +23,18 @@ public class Space : MonoBehaviour {
 
     void BunnyCheck(Bunny b, Bunny ob, int dx, int dy)
     {
-        if (dy == 0)
-        {
 
-            int sign = Math.Sign(dx);
-            for (int j = x + sign; sign * (j - (x + dx)) <= 0; j += sign)
-            {
-                if (ob.x == j && ob.y == y)
-                {
-                    dx += sign;
-                    break;
-                }
-            }
-        }
-        if (dx == 0)
+        int signx = Math.Sign(dx);
+        int signy = Math.Sign(dy);
+        for (int j = x + signx, k = y + signy; 
+            signx * (j - (x + dx)) <= 0 && signy * (k - (y + dy)) <= 0; 
+            j += signx, k += signy)
         {
-
-            int sign = Math.Sign(dy);
-            for (int j = y + sign; sign * (j - (y + dy)) <= 0; j += sign)
+            if (ob.x == j && ob.y == k)
             {
-                if (ob.x == x && ob.y == j)
-                {
-                    dy += sign;
-                    break;
-                }
+                dy += signy;
+                dx += signx;
+                break;
             }
         }
 
@@ -61,14 +49,18 @@ public class Space : MonoBehaviour {
         Debug.Log("" + x + "," + y + ":" + value);
         for (int i = 0; i < challenge.boardBunnies.Count; i++) 
         {
-            Bunny b = challenge.boardBunnies[i];
-            Bunny ob = challenge.boardBunnies[1 - i];
 
-            // Look in all four directions for any bunnies that can jump.
-            BunnyCheck(b, ob, value, 0);
-            BunnyCheck(b, ob, -value, 0);
-            BunnyCheck(b, ob, 0, value);
-            BunnyCheck(b, ob, 0, -value);
+            Bunny b = challenge.boardBunnies[i];
+            if (b.state == BunnyState.REST)
+            {
+                Bunny ob = challenge.boardBunnies[1 - i];
+
+                // Look in all four directions for any bunnies that can jump.
+                BunnyCheck(b, ob, value, 0);
+                BunnyCheck(b, ob, -value, 0);
+                BunnyCheck(b, ob, 0, value);
+                BunnyCheck(b, ob, 0, -value);
+            }
         }
 
         foreach (Bunny b in challenge.boardBunnies)

@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class Challenge : MonoBehaviour {
 
-    public static readonly int XSIZE = 8;
-    public static readonly int YSIZE = 8;
+    public static readonly int XSIZE = 7;
+    public static readonly int YSIZE = 7;
     private int[,] values;
     public GameObject spacefab;
     public GameObject bunny1;
@@ -24,7 +24,7 @@ public class Challenge : MonoBehaviour {
         {
             for (int j = 0; j < YSIZE; j++)
             {
-                values[i, j] = Random.Range(0, 6);
+                values[i, j] = Random.Range(2, 4);
             }
         }
 
