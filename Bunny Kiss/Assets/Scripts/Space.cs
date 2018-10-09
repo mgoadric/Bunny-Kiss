@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class Space : MonoBehaviour {
@@ -24,51 +25,27 @@ public class Space : MonoBehaviour {
     {
         if (dy == 0)
         {
-            if (dx > 0)
+
+            int sign = Math.Sign(dx);
+            for (int j = x + sign; sign * (j - (x + dx)) <= 0; j += sign)
             {
-                for (int j = x + 1; j <= x + dx; j++)
+                if (ob.x == j && ob.y == y)
                 {
-                    if (ob.x == j && ob.y == y)
-                    {
-                        dx++;
-                        break;
-                    }
-                }
-            }
-            else if (dx < 0)
-            {
-                for (int j = x - 1; j >= x + dx; j--)
-                {
-                    if (ob.x == j && ob.y == y)
-                    {
-                        dx--;
-                        break;
-                    }
+                    dx += sign;
+                    break;
                 }
             }
         }
         if (dx == 0)
         {
-            if (dy > 0)
+
+            int sign = Math.Sign(dy);
+            for (int j = y + sign; sign * (j - (y + dy)) <= 0; j += sign)
             {
-                for (int j = y + 1; j <= y + dy; j++)
+                if (ob.x == x && ob.y == j)
                 {
-                    if (ob.x == x && ob.y == j)
-                    {
-                        dy++;
-                        break;
-                    }
-                }
-            }
-            else if (dy < 0)
-            {
-                for (int j = y - 1; j >= y + dy; j--)
-                {
-                    if (ob.x == x && ob.y == j)
-                    {
-                        dy--;
-                        break;
-                    }
+                    dy += sign;
+                    break;
                 }
             }
         }
