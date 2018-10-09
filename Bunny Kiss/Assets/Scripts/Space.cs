@@ -10,6 +10,9 @@ public class Space : MonoBehaviour {
     public int x;
     public int y;
     public GameObject text;
+    public GameObject field;
+    public Sprite background;
+    public Sprite obstacle;
 
 	// Use this for initialization
 	void Start () {
@@ -47,6 +50,7 @@ public class Space : MonoBehaviour {
     void OnMouseDown()
     {
         Debug.Log("" + x + "," + y + ":" + value);
+
         for (int i = 0; i < challenge.boardBunnies.Count; i++) 
         {
 

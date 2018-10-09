@@ -7,10 +7,8 @@ public enum BunnyState
     REST, READY, MOVING
 }
 
-public class Bunny : MonoBehaviour {
+public class Bunny : Obstacle {
 
-    public int x;
-    public int y;
     public int destx;
     public int desty;
 
@@ -63,13 +61,6 @@ public class Bunny : MonoBehaviour {
             state = BunnyState.MOVING;
             startTime = Time.time;
         }
-    }
-
-    public void StartAt(int x, int y)
-    {
-        this.x = x;
-        this.y = y;
-        gameObject.transform.position = new Vector3(x - Challenge.XSIZE / 2, y - Challenge.YSIZE / 2, -1);
     }
 
     public bool Equals(Bunny b)

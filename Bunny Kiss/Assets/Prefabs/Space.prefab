@@ -287,6 +287,9 @@ MonoBehaviour:
   x: 0
   y: 0
   text: {fileID: 1787502004226544}
+  field: {fileID: 1338360532803176}
+  background: {fileID: 21300000, guid: c171a99a5279ace4abfc7e73de33a08e, type: 3}
+  obstacle: {fileID: 21300000, guid: 16271f3f3eca0ae47b591692fa82a531, type: 3}
 --- !u!212 &212512355983156284
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -322,7 +325,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 41a92bd6611777c45959df32a9bb68a9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c171a99a5279ace4abfc7e73de33a08e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

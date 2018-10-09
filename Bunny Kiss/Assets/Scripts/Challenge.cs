@@ -24,7 +24,7 @@ public class Challenge : MonoBehaviour {
         {
             for (int j = 0; j < YSIZE; j++)
             {
-                values[i, j] = Random.Range(2, 4);
+                values[i, j] = Random.Range(0, 6);
             }
         }
 
@@ -43,7 +43,9 @@ public class Challenge : MonoBehaviour {
 
                 if (script.value == 0)
                 {
+                    script.field.GetComponent<SpriteRenderer>().sprite = script.obstacle;
                     script.text.GetComponent<TextMeshPro>().enabled = false;
+                    space.GetComponent<BoxCollider2D>().enabled = false;
                 } else
                 {
                     script.text.GetComponent<TextMeshPro>().text = "" + script.value;
