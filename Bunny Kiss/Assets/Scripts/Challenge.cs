@@ -9,10 +9,12 @@ public class Challenge : MonoBehaviour {
     public static readonly int YSIZE = 7;
     private int[,] values;
     public GameObject spacefab;
+    public GameObject obstaclefab;
     public GameObject bunny1;
     public GameObject bunny2;
 
     public List<Bunny> boardBunnies;
+    public List<Obstacle> obstacles;
 
 	// Use this for initialization
 	void Start () {
@@ -28,6 +30,8 @@ public class Challenge : MonoBehaviour {
             }
         }
 
+        obstacles = new List<Obstacle>();
+
         // MAKE THE OBJECTS BASED ON THE LEVEL
         int w = values.GetLength(0);
         int h = values.GetLength(1);
@@ -35,23 +39,24 @@ public class Challenge : MonoBehaviour {
         {
             for (int j = 0; j < h; j++)
             {
-                GameObject space = Instantiate<GameObject>(spacefab, new Vector3(i - w / 2, j - h / 2, 0), Quaternion.identity);
-                Space script = space.GetComponent<Space>();
-                script.value = values[i, j];
-                script.x = i;
-                script.y = j;
-
-                if (script.value == 0)
+                if (values[i,j] == 0)
                 {
-                    script.field.GetComponent<SpriteRenderer>().sprite = script.obstacle;
-                    script.text.GetComponent<TextMeshPro>().enabled = false;
-                    space.GetComponent<BoxCollider2D>().enabled = false;
+                    GameObject space = Instantiate<GameObject>(obstaclefab, new Vector3(i - w / 2, j - h / 2, 0), Quaternion.identity);
+                    Obstacle ob = space.GetComponent<Obstacle>();
+                    ob.x = i;
+                    ob.y = j;
+                    obstacles.Add(ob);
                 } else
                 {
+                    GameObject space = Instantiate<GameObject>(spacefab, new Vector3(i - w / 2, j - h / 2, 0), Quaternion.identity);
+                    Space script = space.GetComponent<Space>();
+                    script.value = values[i, j];
+                    script.x = i;
+                    script.y = j;
                     script.text.GetComponent<TextMeshPro>().text = "" + script.value;
+                    script.challenge = this;
                 }
-                
-                script.challenge = this;
+               
             }
         }
 

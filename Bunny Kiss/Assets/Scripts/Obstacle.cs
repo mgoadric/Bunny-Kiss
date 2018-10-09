@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Obstacle : MonoBehaviour {
+public class Obstacle : MonoBehaviour {
 
     public int x;
     public int y;

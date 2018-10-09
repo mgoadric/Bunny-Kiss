@@ -12,7 +12,6 @@ public class Space : MonoBehaviour {
     public GameObject text;
     public GameObject field;
     public Sprite background;
-    public Sprite obstacle;
 
 	// Use this for initialization
 	void Start () {
