@@ -17,10 +17,12 @@ public class Bunny : Obstacle {
 
     public BunnyState state = BunnyState.REST;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
+    Animator m_Animator;
+
+    // Use this for initialization
+    void Start () {
+        m_Animator = gameObject.GetComponent<Animator>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -60,6 +62,7 @@ public class Bunny : Obstacle {
         {
             state = BunnyState.MOVING;
             startTime = Time.time;
+            m_Animator.SetTrigger("jump");
         }
     }
 

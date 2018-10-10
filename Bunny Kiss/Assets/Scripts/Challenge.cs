@@ -64,6 +64,8 @@ public class Challenge : MonoBehaviour {
         boardBunnies = new List<Bunny>();
         MakeBunny(0, 0, bunny1);
         MakeBunny(XSIZE - 1, YSIZE - 1, bunny2);
+        Vector3 eulerAngles = bunny2.transform.localEulerAngles;
+        eulerAngles.y = 180f;
     }
 
     void MakeBunny(int x, int y, GameObject bun)
