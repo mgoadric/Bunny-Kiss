@@ -66,6 +66,8 @@ public class Challenge : MonoBehaviour {
         MakeBunny(XSIZE - 1, YSIZE - 1, bunny2);
         Vector3 eulerAngles = bunny2.transform.localEulerAngles;
         eulerAngles.y = 180f;
+        bunny2.transform.localRotation = Quaternion.Euler(eulerAngles);
+
     }
 
     void MakeBunny(int x, int y, GameObject bun)

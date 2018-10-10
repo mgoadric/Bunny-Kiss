@@ -234,6 +234,6 @@ MonoBehaviour:
   obstaclefab: {fileID: 1020297952649042, guid: 5317a897d53552d4a99ec505eeddf73c,
     type: 2}
   bunny1: {fileID: 1921416498897676, guid: 67b24a0edaf1a7a4a9b134d1a85c3ebd, type: 2}
-  bunny2: {fileID: 1248460286047570, guid: 8e1dc0c053ee45241af3257de76558fb, type: 2}
+  bunny2: {fileID: 1921416498897676, guid: 67b24a0edaf1a7a4a9b134d1a85c3ebd, type: 2}
   boardBunnies: []
   obstacles: []

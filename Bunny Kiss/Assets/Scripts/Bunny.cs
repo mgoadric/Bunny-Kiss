@@ -23,9 +23,9 @@ public class Bunny : Obstacle {
     void Start () {
         m_Animator = gameObject.GetComponent<Animator>();
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update () {
 
         if (state == BunnyState.MOVING)
         {
