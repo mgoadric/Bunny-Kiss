@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public enum BunnyState
@@ -21,7 +22,7 @@ public class Bunny : Obstacle {
 
     // Use this for initialization
     void Start () {
-        speed = 1.0F;
+        speed = 2.0F;
         m_Animator = gameObject.GetComponent<Animator>();
     }
 
@@ -45,6 +46,7 @@ public class Bunny : Obstacle {
                 state = BunnyState.REST;
                 x = destx;
                 y = desty;
+                Point(0, Math.Max(0, Math.Sign(x - Challenge.XSIZE / 2)) * 180);
             }
         }
 		
@@ -72,6 +74,8 @@ public class Bunny : Obstacle {
             state = BunnyState.MOVING;
             startTime = Time.time;
             m_Animator.SetTrigger("jump");
+
+            Point(Math.Sign(desty - y) * 90, Math.Max(0, Math.Sign(x - destx)) * 180);
         }
     }
 
