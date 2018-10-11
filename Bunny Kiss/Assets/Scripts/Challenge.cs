@@ -63,19 +63,17 @@ public class Challenge : MonoBehaviour {
         // PUT THE BUNNIES ON THE BOARD
         boardBunnies = new List<Bunny>();
         MakeBunny(0, 0, bunny1);
-        MakeBunny(XSIZE - 1, YSIZE - 1, bunny2);
-        Vector3 eulerAngles = bunny2.transform.localEulerAngles;
-        eulerAngles.y = 180f;
-        bunny2.transform.localRotation = Quaternion.Euler(eulerAngles);
-
+        Bunny b2 = MakeBunny(XSIZE - 1, YSIZE - 1, bunny2);
+        b2.Point(0, 180);
     }
 
-    void MakeBunny(int x, int y, GameObject bun)
+    Bunny MakeBunny(int x, int y, GameObject bun)
     {
         GameObject bunny = Instantiate<GameObject>(bun);
         Bunny b = bunny.GetComponent<Bunny>();
         b.StartAt(x, y);
         boardBunnies.Add(b);
+        return b;
     }
 
     // Update is called once per frame

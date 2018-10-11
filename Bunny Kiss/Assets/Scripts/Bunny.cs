@@ -12,7 +12,7 @@ public class Bunny : Obstacle {
     public int destx;
     public int desty;
 
-    public float speed = 3.0f;
+    public float speed;
     public float startTime;
 
     public BunnyState state = BunnyState.REST;
@@ -21,6 +21,7 @@ public class Bunny : Obstacle {
 
     // Use this for initialization
     void Start () {
+        speed = 1.0F;
         m_Animator = gameObject.GetComponent<Animator>();
     }
 
@@ -48,6 +49,14 @@ public class Bunny : Obstacle {
         }
 		
 	}
+
+    public void Point(float zangle, float yangle)
+    {
+        Vector3 eulerAngles = gameObject.transform.localEulerAngles;
+        eulerAngles.z = zangle;
+        eulerAngles.y = yangle;
+        transform.localRotation = Quaternion.Euler(eulerAngles);
+    }
 
     public void QueueMove(int destx, int desty)
     {
