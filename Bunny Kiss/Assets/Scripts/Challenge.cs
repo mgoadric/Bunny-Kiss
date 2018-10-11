@@ -7,6 +7,8 @@ public class Challenge : MonoBehaviour {
 
     public static readonly int XSIZE = 7;
     public static readonly int YSIZE = 7;
+    public int minvalue;
+    public int maxvalue;
     private int[,] values;
     public GameObject spacefab;
     public GameObject obstaclefab;
@@ -26,7 +28,7 @@ public class Challenge : MonoBehaviour {
         {
             for (int j = 0; j < YSIZE; j++)
             {
-                values[i, j] = Random.Range(3, 4);
+                values[i, j] = Random.Range(minvalue, maxvalue);
             }
         }
 

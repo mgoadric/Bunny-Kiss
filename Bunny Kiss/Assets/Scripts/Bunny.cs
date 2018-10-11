@@ -46,7 +46,7 @@ public class Bunny : Obstacle {
                 state = BunnyState.REST;
                 x = destx;
                 y = desty;
-                Point(0, Math.Max(0, Math.Sign(x - Challenge.XSIZE / 2)) * 180);
+                Point(0, gameObject.transform.localEulerAngles.y);
             }
         }
 		
