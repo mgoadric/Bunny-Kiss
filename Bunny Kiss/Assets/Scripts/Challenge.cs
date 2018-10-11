@@ -26,7 +26,7 @@ public class Challenge : MonoBehaviour {
         {
             for (int j = 0; j < YSIZE; j++)
             {
-                values[i, j] = Random.Range(2, 3);
+                values[i, j] = Random.Range(3, 4);
             }
         }
 
