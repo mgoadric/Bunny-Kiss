@@ -1,15 +1,15 @@
 fileFormatVersion: 2
-guid: 2d9fdeb804130ff4795d1b4a0214e518
+guid: 70d25b0e212eb3643a5d17e5e5e9d2d9
 TextureImporter:
   fileIDToRecycleName:
-    21300000: bunnyspritesheetAsset 6_0
-    21300002: bunnyspritesheetAsset 6_1
-    21300004: bunnyspritesheetAsset 6_2
-    21300006: bunnyspritesheetAsset 6_3
-    21300008: bunnyspritesheetAsset 6_4
-    21300010: bunnyspritesheetAsset 6_5
-    21300012: bunnyspritesheetAsset 6_6
-    21300014: bunnyspritesheetAsset 6_7
+    21300000: bunnysheetAsset 8@4x_0
+    21300002: bunnysheetAsset 8@4x_1
+    21300004: bunnysheetAsset 8@4x_2
+    21300006: bunnysheetAsset 8@4x_3
+    21300008: bunnysheetAsset 8@4x_4
+    21300010: bunnysheetAsset 8@4x_5
+    21300012: bunnysheetAsset 8@4x_6
+    21300014: bunnysheetAsset 8@4x_7
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -39,7 +39,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: -1
     aniso: -1
     mipBias: -100
     wrapU: 1
@@ -53,7 +53,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 400
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -114,161 +114,161 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bunnyspritesheetAsset 6_0
+      name: bunnysheetAsset 8@4x_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 54
-        width: 19
-        height: 28
+        y: 239
+        width: 49
+        height: 64
       alignment: 9
-      pivot: {x: 0.31578946, y: 0.5}
+      pivot: {x: 0.4489796, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 63c13c610371a964ab6ca82405a7d7a3
+      spriteID: c3f4ec8942d53a044be97e5ba2ff760b
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bunnyspritesheetAsset 6_1
+      name: bunnysheetAsset 8@4x_1
       rect:
         serializedVersion: 2
-        x: 17
-        y: 52
-        width: 35
-        height: 38
+        x: 89
+        y: 225
+        width: 96
+        height: 126
       alignment: 9
-      pivot: {x: 0.5, y: 0.55263156}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3214c1f8b1750a64bbb219180ccbe8fa
+      spriteID: aa60d370c0176484b8e88111980e8f98
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bunnyspritesheetAsset 6_2
+      name: bunnysheetAsset 8@4x_2
       rect:
         serializedVersion: 2
-        x: 48
-        y: 53
-        width: 28
-        height: 37
+        x: 203
+        y: 224
+        width: 86
+        height: 130
       alignment: 9
-      pivot: {x: 0.5, y: 0.5405406}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 26bb38e67d59803498c9dd2a0c9ba927
+      spriteID: aa06e8a0825422242936bdd24d3b9c9d
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bunnyspritesheetAsset 6_3
+      name: bunnysheetAsset 8@4x_3
       rect:
         serializedVersion: 2
-        x: 78
-        y: 49.000004
-        width: 48
-        height: 40.999996
+        x: 332
+        y: 215.00002
+        width: 148
+        height: 141.99998
       alignment: 9
-      pivot: {x: 0.5, y: 0.58536583}
+      pivot: {x: 0.5, y: 0.52464783}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f33f35fd5029e8f4eb0c37eb86b6c973
+      spriteID: 8288f1c9ed928ac41b81f0ed05e54ce6
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bunnyspritesheetAsset 6_4
+      name: bunnysheetAsset 8@4x_4
       rect:
         serializedVersion: 2
-        x: 122
-        y: 57
-        width: 22
-        height: 25
+        x: 509
+        y: 248
+        width: 55
+        height: 56
       alignment: 9
-      pivot: {x: 0.5681818, y: 0.5}
+      pivot: {x: 0.49999997, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 92750813091938a49b4d8b4a891d113e
+      spriteID: 36b9e8bd85edf554899999eae5f69a47
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bunnyspritesheetAsset 6_5
+      name: bunnysheetAsset 8@4x_5
       rect:
         serializedVersion: 2
-        x: 0
-        y: 3
-        width: 45
-        height: 51
+        x: 5
+        y: 31.500008
+        width: 151
+        height: 159
       alignment: 9
-      pivot: {x: 0.45555556, y: 0.5}
+      pivot: {x: 0.5, y: 0.50314456}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d35299e13f1dd7547868094b3d1b68e4
+      spriteID: 32b7eeae229cd5341988bead4a2e34b2
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bunnyspritesheetAsset 6_6
+      name: bunnysheetAsset 8@4x_6
       rect:
         serializedVersion: 2
-        x: 42
+        x: 189.00002
         y: 0
-        width: 84
-        height: 58
+        width: 293
+        height: 206.5
       alignment: 9
-      pivot: {x: 0.5, y: 0.44827586}
+      pivot: {x: 0.49999994, y: 0.4842615}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7466b1b87270d2d4fb3940a1422c8a85
+      spriteID: a9d03c82ac15d5742a17647bb27434b6
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bunnyspritesheetAsset 6_7
+      name: bunnysheetAsset 8@4x_7
       rect:
         serializedVersion: 2
-        x: 122
-        y: 26
-        width: 22
-        height: 26
+        x: 510
+        y: 125
+        width: 62
+        height: 57
       alignment: 9
-      pivot: {x: 0.65909094, y: 0.5}
+      pivot: {x: 0.5564516, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ca53bf321cc1cdc4a9654ce5a254407b
+      spriteID: 17274154b749a3b42a8c537b3162f5f6
       vertices: []
       indices: 
       edges: []
@@ -276,7 +276,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5226d85835f26a445a8d7519d38f8bc7
+    spriteID: c48caa57f5c951c418b53e4a83973355
     vertices: []
     indices: 
     edges: []
@@ -284,6 +284,6 @@ TextureImporter:
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
-  userData: 636747958828286508
+  userData: 636749689119233083
   assetBundleName: 
   assetBundleVariant: 
