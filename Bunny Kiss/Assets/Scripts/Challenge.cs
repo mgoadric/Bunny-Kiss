@@ -12,14 +12,15 @@ public class Challenge : MonoBehaviour {
     private int[,] values;
     public GameObject spacefab;
     public GameObject obstaclefab;
-    public GameObject bunny1;
-    public GameObject bunny2;
+    public GameObject bunnyfab;
 
     public List<Bunny> boardBunnies;
     public List<Obstacle> obstacles;
+    public bool complete;
 
-	// Use this for initialization
-	void Start () {
+
+    // Use this for initialization
+    void Start () {
 
         // MAKE A RANDOM LEVEL
         values = new int[XSIZE, YSIZE];
@@ -64,9 +65,11 @@ public class Challenge : MonoBehaviour {
 
         // PUT THE BUNNIES ON THE BOARD
         boardBunnies = new List<Bunny>();
-        MakeBunny(0, 0, bunny1);
-        Bunny b2 = MakeBunny(XSIZE - 1, YSIZE - 1, bunny2);
+        MakeBunny(0, 0, bunnyfab);
+        Bunny b2 = MakeBunny(XSIZE - 1, YSIZE - 1, bunnyfab);
         b2.Point(0, 180);
+
+        complete = false;
     }
 
     Bunny MakeBunny(int x, int y, GameObject bun)
@@ -80,6 +83,10 @@ public class Challenge : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-		
+		if (!complete && boardBunnies[0].Equals(boardBunnies[1]))
+        {
+            Debug.Log("Hooray, kiss!");
+            complete = true;
+        }
 	}
 }
