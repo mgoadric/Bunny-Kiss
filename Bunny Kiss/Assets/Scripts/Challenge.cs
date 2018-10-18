@@ -13,6 +13,7 @@ public class Challenge : MonoBehaviour {
     public GameObject spacefab;
     public GameObject obstaclefab;
     public GameObject bunnyfab;
+    public GameObject heartsfab;
 
     public List<Bunny> boardBunnies;
     public List<Obstacle> obstacles;
@@ -86,6 +87,7 @@ public class Challenge : MonoBehaviour {
 		if (!complete && boardBunnies[0].Equals(boardBunnies[1]))
         {
             Debug.Log("Hooray, kiss!");
+            Instantiate<GameObject>(heartsfab, new Vector3(boardBunnies[0].transform.position.x, boardBunnies[0].transform.position.y, 0), Quaternion.identity);
             complete = true;
         }
 	}
