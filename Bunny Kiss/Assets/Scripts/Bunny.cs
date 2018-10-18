@@ -10,8 +10,8 @@ public enum BunnyState
 
 public class Bunny : Obstacle {
 
-    public int destx;
-    public int desty;
+    public float destx;
+    public float desty;
 
     public float speed;
     public float startTime;
@@ -44,8 +44,8 @@ public class Bunny : Obstacle {
             if (fracJourney > 1)
             {
                 state = BunnyState.REST;
-                x = destx;
-                y = desty;
+                x = (int)destx;
+                y = (int)desty;
                 Point(0, gameObject.transform.localEulerAngles.y);
             }
         }
@@ -60,14 +60,14 @@ public class Bunny : Obstacle {
         transform.localRotation = Quaternion.Euler(eulerAngles);
     }
 
-    public void QueueMove(int destx, int desty)
+    public void QueueMove(float destx, float desty)
     {
         this.destx = destx;
         this.desty = desty;
         state = BunnyState.READY;
     }
 
-    public void Move()
+    public void Move(bool kiss)
     {
         if (state == BunnyState.READY)
         {
@@ -75,12 +75,26 @@ public class Bunny : Obstacle {
             startTime = Time.time;
             m_Animator.SetTrigger("jump");
 
-            Point(Math.Sign(desty - y) * 90, Math.Max(0, Math.Sign(x - destx)) * 180);
+            if (kiss)
+            {
+                Point(Math.Sign(desty - y) * 90, Math.Max(0, -Math.Sign(x - destx)) * 180);
+
+            }
+            else
+            {
+                Point(Math.Sign(desty - y) * 90, Math.Max(0, Math.Sign(x - destx)) * 180);
+            }
         }
+    }
+
+    public void Kiss()
+    {
+        m_Animator.SetBool("kiss", true);
     }
 
     public bool Equals(Bunny b)
     {
         return x == b.x && y == b.y;
     }
+
 }

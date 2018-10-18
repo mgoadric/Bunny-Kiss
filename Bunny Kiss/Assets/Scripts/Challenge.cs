@@ -88,6 +88,12 @@ public class Challenge : MonoBehaviour {
         {
             Debug.Log("Hooray, kiss!");
             Instantiate<GameObject>(heartsfab, new Vector3(boardBunnies[0].transform.position.x, boardBunnies[0].transform.position.y, 0), Quaternion.identity);
+            boardBunnies[0].Kiss();
+            boardBunnies[0].QueueMove(boardBunnies[0].x + 0.43f, boardBunnies[0].y);
+            boardBunnies[0].Move(true);
+            boardBunnies[1].Kiss();
+            boardBunnies[1].QueueMove(boardBunnies[1].x - 0.43f, boardBunnies[1].y);
+            boardBunnies[1].Move(true);
             complete = true;
         }
 	}
