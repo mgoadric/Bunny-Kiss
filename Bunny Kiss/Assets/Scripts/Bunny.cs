@@ -87,9 +87,20 @@ public class Bunny : Obstacle {
         }
     }
 
-    public void Kiss()
+    public void Kiss(float deltax)
     {
         m_Animator.SetBool("kiss", true);
+        QueueMove(x + deltax, y);
+        Move(true);
+        StartCoroutine("StopKiss");
+    }
+
+    IEnumerator StopKiss()
+    {
+        yield return new WaitForSeconds(3);
+        m_Animator.SetTrigger("jump");
+        m_Animator.SetBool("kiss", false);
+        yield return null;
     }
 
     public bool Equals(Bunny b)
