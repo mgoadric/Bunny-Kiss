@@ -72,9 +72,14 @@ public class Space : MonoBehaviour {
             }
         }
 
+        bool anymove = false;
         foreach (Bunny b in challenge.boardBunnies)
         {
-            b.Move(false);
+            anymove |= b.Move(false);
+        }
+        if (anymove)
+        {
+            challenge.moves++;
         }
     }
 }

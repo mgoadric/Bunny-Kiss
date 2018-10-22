@@ -67,7 +67,7 @@ public class Bunny : Obstacle {
         state = BunnyState.READY;
     }
 
-    public void Move(bool kiss)
+    public bool Move(bool kiss)
     {
         if (state == BunnyState.READY)
         {
@@ -78,12 +78,17 @@ public class Bunny : Obstacle {
             if (kiss)
             {
                 Point(Math.Sign(desty - y) * 90, Math.Max(0, -Math.Sign(x - destx)) * 180);
-
+                return false;
             }
             else
             {
                 Point(Math.Sign(desty - y) * 90, Math.Max(0, Math.Sign(x - destx)) * 180);
+                return true;
             }
+        }
+        else
+        {
+            return false;
         }
     }
 
@@ -114,7 +119,10 @@ public class Bunny : Obstacle {
         state = BunnyState.REST;
         destx = startx;
         desty = starty;
+        StopCoroutine("StopKiss");
         m_Animator.SetTrigger("reset");
+        m_Animator.SetBool("kiss", false);
         startTime = 0;
+
     }
 }

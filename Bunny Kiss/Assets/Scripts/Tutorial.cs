@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Tutorial : MonoBehaviour {
 
@@ -23,6 +25,8 @@ public class Tutorial : MonoBehaviour {
 
     public int currentLevel;
     public Challenge challenge;
+    public Button next;
+    public TextMeshProUGUI moves;
 
     public static Tutorial S;
 
@@ -42,6 +46,10 @@ public class Tutorial : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+        if (challenge)
+        {
+            moves.text = "Moves: " + challenge.moves;
+        }
 	}
 
     public void ResetChallenge()

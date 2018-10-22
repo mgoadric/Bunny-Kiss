@@ -7,6 +7,7 @@ public class Challenge : MonoBehaviour {
 
     public static int XSIZE;
     public static int YSIZE;
+    public int moves;
     public int minvalue;
     public int maxvalue;
     private int[,] values;
@@ -99,6 +100,8 @@ public class Challenge : MonoBehaviour {
         {
             b.ResetPosition();
         }
+        complete = false;
+        moves = 0;
     }
 
     // Update is called once per frame
