@@ -22,7 +22,7 @@ public class Tutorial : MonoBehaviour {
         };
 
     public int currentLevel;
-    public GameObject challenge;
+    public Challenge challenge;
 
     public static Tutorial S;
 
@@ -34,7 +34,7 @@ public class Tutorial : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        currentLevel = 7;
+        currentLevel = 0;
 
         MakeChallenge();
 
@@ -42,7 +42,12 @@ public class Tutorial : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		
+		if (challenge && challenge.complete)
+        {
+            currentLevel++;
+            Destroy(challenge.gameObject);
+            MakeChallenge();
+        }
 	}
 
     public static MemoryStream GenerateStreamFromString(string value)
@@ -69,8 +74,8 @@ public class Tutorial : MonoBehaviour {
         }
         reader.Close();
 
-        challenge = Instantiate(challengefab);
-        Challenge c = challenge.GetComponent<Challenge>();
-        c.SetUp(xsize, ysize, board);
+        GameObject go = Instantiate(challengefab);
+        challenge = go.GetComponent<Challenge>();
+        challenge.SetUp(xsize, ysize, board);
     }
 }

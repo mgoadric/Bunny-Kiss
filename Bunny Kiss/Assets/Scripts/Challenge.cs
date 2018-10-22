@@ -55,6 +55,7 @@ public class Challenge : MonoBehaviour {
                 if (values[i,j] == 0)
                 {
                     GameObject space = Instantiate<GameObject>(obstaclefab, new Vector3(i - w / 2, j - h / 2, 0), Quaternion.identity);
+                    space.transform.parent = this.transform;
                     Obstacle ob = space.GetComponent<Obstacle>();
                     ob.x = i;
                     ob.y = j;
@@ -62,6 +63,7 @@ public class Challenge : MonoBehaviour {
                 } else if (values[i,j] > 0)
                 {
                     GameObject space = Instantiate<GameObject>(spacefab, new Vector3(i - w / 2, j - h / 2, 0), Quaternion.identity);
+                    space.transform.parent = this.transform;
                     Space script = space.GetComponent<Space>();
                     script.value = values[i, j];
                     script.x = i;
@@ -83,6 +85,8 @@ public class Challenge : MonoBehaviour {
     Bunny MakeBunny(int x, int y, GameObject bun)
     {
         GameObject bunny = Instantiate<GameObject>(bun);
+        bunny.transform.parent = this.transform;
+
         Bunny b = bunny.GetComponent<Bunny>();
         b.StartAt(x, y);
         boardBunnies.Add(b);
