@@ -108,4 +108,13 @@ public class Bunny : Obstacle {
         return x == b.x && y == b.y;
     }
 
+    public void ResetPosition()
+    {
+        StartAt(startx, starty);
+        state = BunnyState.REST;
+        destx = startx;
+        desty = starty;
+        m_Animator.SetTrigger("reset");
+        startTime = 0;
+    }
 }

@@ -93,6 +93,14 @@ public class Challenge : MonoBehaviour {
         return b;
     }
 
+    public void ResetChallenge()
+    {
+        foreach (Bunny b in boardBunnies)
+        {
+            b.ResetPosition();
+        }
+    }
+
     // Update is called once per frame
     void Update() {
         if (ready && !complete)
@@ -101,7 +109,9 @@ public class Challenge : MonoBehaviour {
             if (boardBunnies[0].Equals(boardBunnies[1]))
             {
                 Debug.Log("Hooray, kiss!");
-                Instantiate<GameObject>(heartsfab, new Vector3(boardBunnies[0].transform.position.x, boardBunnies[0].transform.position.y, 0), Quaternion.identity);
+                GameObject hearts = Instantiate<GameObject>(heartsfab, new Vector3(boardBunnies[0].transform.position.x, boardBunnies[0].transform.position.y, 0), Quaternion.identity);
+                hearts.transform.parent = this.transform;
+
                 boardBunnies[0].Kiss(0.43f);
                 boardBunnies[1].Kiss(-0.43f);
                 complete = true;

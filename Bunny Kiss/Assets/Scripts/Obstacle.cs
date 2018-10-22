@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour {
 
+    public int startx;
+    public int starty;
+
     public int x;
     public int y;
 
@@ -19,6 +22,8 @@ public class Obstacle : MonoBehaviour {
 
     public void StartAt(int x, int y)
     {
+        this.startx = x;
+        this.starty = y;
         this.x = x;
         this.y = y;
         gameObject.transform.position = new Vector3(x - Challenge.XSIZE / 2, y - Challenge.YSIZE / 2, -1);

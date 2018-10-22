@@ -9,7 +9,7 @@ public class Tutorial : MonoBehaviour {
 
     public GameObject challengefab;
 
-    private string[] levels = new string[]
+    private readonly string[] levels = new string[]
         { "2\n3\n1,1,-1\n-1,2,1",
           "2\n3\n2,1,-1\n-1,1,2",
           "3\n3\n-1,2,0\n1,1,1\n0,2,-1",
@@ -42,19 +42,25 @@ public class Tutorial : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if (challenge && challenge.complete)
+	}
+
+    public void ResetChallenge()
+    {
+        if (challenge)
+        {
+            challenge.ResetChallenge();
+        }
+    }
+
+    public void NextChallenge()
+    {
+        if (challenge && challenge.complete)
         {
             currentLevel++;
             Destroy(challenge.gameObject);
             MakeChallenge();
         }
-	}
-
-    public static MemoryStream GenerateStreamFromString(string value)
-    {
-        return new MemoryStream(Encoding.UTF8.GetBytes(value ?? ""));
     }
-
 
     void MakeChallenge()
     {
@@ -78,4 +84,11 @@ public class Tutorial : MonoBehaviour {
         challenge = go.GetComponent<Challenge>();
         challenge.SetUp(xsize, ysize, board);
     }
+
+    public static MemoryStream GenerateStreamFromString(string value)
+    {
+        return new MemoryStream(Encoding.UTF8.GetBytes(value ?? ""));
+    }
+
+
 }
