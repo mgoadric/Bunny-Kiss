@@ -25,7 +25,7 @@ public class Tutorial : MonoBehaviour {
 
     public int currentLevel;
     public Challenge challenge;
-    public Button next;
+    public GameObject next;
     public TextMeshProUGUI moves;
 
     public static Tutorial S;
@@ -49,6 +49,14 @@ public class Tutorial : MonoBehaviour {
         if (challenge)
         {
             moves.text = "Moves: " + challenge.moves;
+            if (challenge.complete)
+            {
+                next.SetActive(true); 
+            } 
+            else
+            {
+                next.SetActive(false);
+            }
         }
 	}
 
@@ -91,6 +99,7 @@ public class Tutorial : MonoBehaviour {
         GameObject go = Instantiate(challengefab);
         challenge = go.GetComponent<Challenge>();
         challenge.SetUp(xsize, ysize, board);
+        next.SetActive(false);
     }
 
     public static MemoryStream GenerateStreamFromString(string value)
