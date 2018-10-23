@@ -30,6 +30,7 @@ public class Tutorial : MonoBehaviour {
     public int currentLevel;
     public Challenge challenge;
     public GameObject next;
+    public GameObject prev;
     public TextMeshProUGUI moves;
     public TextMeshProUGUI level;
     private int XOFFSET = -3;
@@ -67,6 +68,13 @@ public class Tutorial : MonoBehaviour {
             {
                 next.SetActive(false);
             }
+        }
+        if (currentLevel > 0)
+        {
+            prev.SetActive(true);
+        } else
+        {
+            prev.SetActive(false);
         }
 	}
 

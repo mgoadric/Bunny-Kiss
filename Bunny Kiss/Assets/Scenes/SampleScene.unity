@@ -222,6 +222,7 @@ MonoBehaviour:
   currentLevel: 0
   challenge: {fileID: 0}
   next: {fileID: 2134145063}
+  prev: {fileID: 2035919253}
   moves: {fileID: 1789741895}
   level: {fileID: 909502850}
 --- !u!4 &656538883
