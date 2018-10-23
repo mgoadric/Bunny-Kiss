@@ -31,6 +31,7 @@ public class Tutorial : MonoBehaviour {
     public Challenge challenge;
     public GameObject next;
     public TextMeshProUGUI moves;
+    public TextMeshProUGUI level;
     private int XOFFSET = -3;
     private int YOFFSET = 0;
 
@@ -48,7 +49,7 @@ public class Tutorial : MonoBehaviour {
     void Start()
     {
         currentLevel = 0;
-
+        level.text = "" + (currentLevel + 1);
         MakeChallenge();
 
     }
@@ -57,7 +58,7 @@ public class Tutorial : MonoBehaviour {
 	void Update () {
         if (challenge)
         {
-            moves.text = "Moves: " + challenge.moves;
+            moves.text = "" + challenge.moves;
             if (challenge.complete)
             {
                 next.SetActive(true); 
@@ -87,9 +88,22 @@ public class Tutorial : MonoBehaviour {
         if (challenge && challenge.complete)
         {
             currentLevel++;
+            level.text = "" + (currentLevel + 1);
             Destroy(challenge.gameObject);
             MakeChallenge();
         }
+    }
+
+    public void PreviousChallenge()
+    {
+        if (challenge)
+        {
+            currentLevel--;
+            level.text = "" + (currentLevel + 1);
+            Destroy(challenge.gameObject);
+            MakeChallenge();
+        }
+
     }
 
     void MakeChallenge()
