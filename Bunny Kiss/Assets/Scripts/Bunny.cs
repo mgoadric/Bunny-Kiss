@@ -20,6 +20,7 @@ public class Bunny : Obstacle {
 
     public Challenge challenge;
     public Bunny other;
+    public GameObject hintfab;
 
     Animator m_Animator;
 
@@ -146,6 +147,18 @@ public class Bunny : Obstacle {
                 } else if (challenge.values[i, y] > 0 && distance - obstaclesInWay == challenge.values[i, y])
                 {
                     Debug.Log("Can move to " + i + "," + y);
+                    GameObject go = Instantiate(hintfab);
+                    LineRenderer line = go.GetComponent<LineRenderer>();
+                    List<Vector3> hintline = new List<Vector3>();
+                    line.positionCount = 10;
+                    hintline.Add(Tutorial.S.RelativePos(x, y, -2));
+                    for (int t = 1; t < 9; t++)
+                    {
+                        hintline.Add(Tutorial.S.RelativePos(x - 0.1f * t * (distance - obstaclesInWay), y, -2));
+                    }
+                    hintline.Add(Tutorial.S.RelativePos(i, y, -2));
+                    line.SetPositions(hintline.ToArray());
+                    
                 }
             }
         }
