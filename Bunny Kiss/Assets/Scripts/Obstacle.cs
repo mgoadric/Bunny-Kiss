@@ -28,6 +28,6 @@ public class Obstacle : MonoBehaviour {
         this.starty = y;
         this.x = x;
         this.y = y;
-        gameObject.transform.position = new Vector3(x - Challenge.XSIZE / 2, y - Challenge.YSIZE / 2, -1);
+        gameObject.transform.position = Tutorial.S.RelativePos(x, y, -1);
     }
 }

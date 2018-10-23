@@ -38,8 +38,8 @@ public class Bunny : Obstacle {
             // Fraction of journey completed = current distance divided by total distance.
             float fracJourney = distCovered;
 
-            gameObject.transform.position = Vector3.Lerp(new Vector3(x - Challenge.XSIZE / 2, y - Challenge.YSIZE / 2, -1),
-                new Vector3(destx - Challenge.XSIZE / 2, desty - Challenge.YSIZE / 2, -1), fracJourney);
+            gameObject.transform.position = Vector3.Lerp(Tutorial.S.RelativePos(x, y, -1),
+                Tutorial.S.RelativePos(destx, desty, -1), fracJourney);
 
             if (fracJourney > 1)
             {
@@ -49,7 +49,6 @@ public class Bunny : Obstacle {
                 Point(0, gameObject.transform.localEulerAngles.y);
             }
         }
-		
 	}
 
     public void Point(float zangle, float yangle)

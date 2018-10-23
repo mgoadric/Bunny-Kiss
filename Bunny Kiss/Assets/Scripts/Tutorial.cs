@@ -31,6 +31,11 @@ public class Tutorial : MonoBehaviour {
     public Challenge challenge;
     public GameObject next;
     public TextMeshProUGUI moves;
+    private int XOFFSET = -3;
+    private int YOFFSET = 0;
+
+    private int XSIZE;
+    private int YSIZE;
 
     public static Tutorial S;
 
@@ -64,6 +69,11 @@ public class Tutorial : MonoBehaviour {
         }
 	}
 
+    public Vector3 RelativePos(float x, float y, float z)
+    {
+        return new Vector3((x - XSIZE / 2) + XOFFSET, (y - YSIZE / 2) + YOFFSET, z);
+    }
+
     public void ResetChallenge()
     {
         if (challenge)
@@ -86,23 +96,23 @@ public class Tutorial : MonoBehaviour {
     {
         StreamReader reader = new StreamReader(GenerateStreamFromString(levels[currentLevel]));
         char[] delim = { ',' };
-        int xsize = int.Parse(reader.ReadLine());
-        int ysize = int.Parse(reader.ReadLine());
-        int[,] board = new int[xsize, ysize];
-        for (int i = 0; i < xsize; i++)
+        XSIZE = int.Parse(reader.ReadLine());
+        YSIZE = int.Parse(reader.ReadLine());
+        int[,] board = new int[XSIZE, YSIZE];
+        for (int i = 0; i < XSIZE; i++)
         {
             string where = reader.ReadLine();
             string[] poss = where.Split(delim);
-            for (int j = 0; j < ysize; j++)
+            for (int j = 0; j < YSIZE; j++)
             {
                 board[i, j] = int.Parse(poss[j]);
             }
         }
         reader.Close();
 
-        GameObject go = Instantiate(challengefab);
+        GameObject go = Instantiate(challengefab, new Vector3(-4, 0, 0), Quaternion.identity);
         challenge = go.GetComponent<Challenge>();
-        challenge.SetUp(xsize, ysize, board);
+        challenge.SetUp(XSIZE, YSIZE, board);
         next.SetActive(false);
     }
 

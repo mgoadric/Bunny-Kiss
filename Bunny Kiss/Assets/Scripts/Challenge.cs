@@ -5,9 +5,7 @@ using UnityEngine;
 
 public class Challenge : MonoBehaviour {
 
-    public static int XSIZE;
-    public static int YSIZE;
-    public int moves;
+     public int moves;
     public int minvalue;
     public int maxvalue;
     private int[,] values;
@@ -29,8 +27,6 @@ public class Challenge : MonoBehaviour {
 
     public void SetUp(int x, int y, int[,] values) {
 
-        XSIZE = x;
-        YSIZE = y;
         this.values = values;
 
         // MAKE A RANDOM LEVEL
@@ -56,7 +52,7 @@ public class Challenge : MonoBehaviour {
             {
                 if (values[i,j] == 0)
                 {
-                    GameObject space = Instantiate<GameObject>(obstaclefab, new Vector3(i - w / 2, j - h / 2, 0), Quaternion.identity);
+                    GameObject space = Instantiate<GameObject>(obstaclefab, Tutorial.S.RelativePos(i, j, 0), Quaternion.identity);
                     space.transform.parent = this.transform;
                     Obstacle ob = space.GetComponent<Obstacle>();
                     ob.x = i;
@@ -64,7 +60,7 @@ public class Challenge : MonoBehaviour {
                     obstacles.Add(ob);
                 } else if (values[i,j] > 0)
                 {
-                    GameObject space = Instantiate<GameObject>(spacefab, new Vector3(i - w / 2, j - h / 2, 0), Quaternion.identity);
+                    GameObject space = Instantiate<GameObject>(spacefab, Tutorial.S.RelativePos(i, j, 0), Quaternion.identity);
                     space.transform.parent = this.transform;
                     Space script = space.GetComponent<Space>();
                     script.value = values[i, j];
@@ -75,7 +71,7 @@ public class Challenge : MonoBehaviour {
                 } else if (values[i,j] == -1)
                 {
                     // Put a bunny on the board
-                    GameObject space = Instantiate<GameObject>(obstaclefab, new Vector3(i - w / 2, j - h / 2, 0), Quaternion.identity);
+                    GameObject space = Instantiate<GameObject>(obstaclefab, Tutorial.S.RelativePos(i, j, 0), Quaternion.identity);
                     space.transform.parent = this.transform;
                     SpriteRenderer sr = space.GetComponent<Obstacle>().mysprite.GetComponent<SpriteRenderer>();
                     sr.sprite = burrowSprite;
@@ -117,7 +113,7 @@ public class Challenge : MonoBehaviour {
             if (boardBunnies[0].Equals(boardBunnies[1]))
             {
                 Debug.Log("Hooray, kiss!");
-                GameObject hearts = Instantiate<GameObject>(heartsfab, new Vector3(boardBunnies[0].transform.position.x, boardBunnies[0].transform.position.y, 0), Quaternion.identity);
+                GameObject hearts = Instantiate<GameObject>(heartsfab, Tutorial.S.RelativePos(boardBunnies[0].x, boardBunnies[0].y, 0), Quaternion.identity);
                 hearts.transform.parent = this.transform;
 
                 boardBunnies[0].Kiss(0.43f);
