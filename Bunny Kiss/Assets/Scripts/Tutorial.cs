@@ -62,19 +62,20 @@ public class Tutorial : MonoBehaviour {
             moves.text = "" + challenge.moves;
             if (challenge.complete)
             {
-                next.SetActive(true); 
+                next.GetComponent<Button>().interactable = true;
             } 
             else
             {
-                next.SetActive(false);
+                next.GetComponent<Button>().interactable = false;
             }
         }
         if (currentLevel > 0)
         {
-            prev.SetActive(true);
-        } else
+            prev.GetComponent<Button>().interactable = true;
+        }
+        else
         {
-            prev.SetActive(false);
+            prev.GetComponent<Button>().interactable = false;
         }
 	}
 
@@ -85,8 +86,10 @@ public class Tutorial : MonoBehaviour {
 
     public void ResetChallenge()
     {
+        Debug.Log("Reset clicked");
         if (challenge)
         {
+            Debug.Log("Resetting");
             challenge.ResetChallenge();
         }
     }
@@ -135,7 +138,7 @@ public class Tutorial : MonoBehaviour {
         GameObject go = Instantiate(challengefab, new Vector3(-4, 0, 0), Quaternion.identity);
         challenge = go.GetComponent<Challenge>();
         challenge.SetUp(XSIZE, YSIZE, board);
-        next.SetActive(false);
+        next.GetComponent<Button>().interactable = false;
     }
 
     public static MemoryStream GenerateStreamFromString(string value)
