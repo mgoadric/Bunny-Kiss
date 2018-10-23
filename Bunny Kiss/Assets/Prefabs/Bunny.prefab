@@ -877,9 +877,9 @@ MonoBehaviour:
   state: 0
   challenge: {fileID: 0}
   other: {fileID: 0}
-  hintfab: {fileID: 1057616761236108, guid: 61b91629e620c21459491bcdc83288f2, type: 2}
+  hintfab: {fileID: 1268257036707628, guid: 9373ea957e030eb499231b796d2fdcd0, type: 2}
   hintLocs: []
-  hintLines: []
+  hintParticles: []
 --- !u!114 &114835854156581474
 MonoBehaviour:
   m_ObjectHideFlags: 1

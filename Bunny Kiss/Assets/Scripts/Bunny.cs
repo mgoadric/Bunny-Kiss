@@ -23,7 +23,7 @@ public class Bunny : Obstacle {
     public GameObject hintfab;
 
     public List<Vector3> hintLocs;
-    public List<GameObject> hintLines;
+    public List<GameObject> hintParticles;
 
     Animator m_Animator;
 
@@ -32,7 +32,7 @@ public class Bunny : Obstacle {
         speed = 2.0F;
         m_Animator = gameObject.GetComponent<Animator>();
         hintLocs = new List<Vector3>();
-        hintLines = new List<GameObject>();
+        hintParticles = new List<GameObject>();
     }
 
     // Update is called once per frame
@@ -66,20 +66,15 @@ public class Bunny : Obstacle {
         {
             foreach (Vector3 endpoint in hintLocs)
             {
-                GameObject go = Instantiate(hintfab);
-                hintLines.Add(go);
-                LineRenderer line = go.GetComponent<LineRenderer>();
-                List<Vector3> hintline = new List<Vector3>();
-                hintline.Add(Tutorial.S.RelativePos(x, y, -2));
-                hintline.Add(endpoint);
-                line.SetPositions(hintline.ToArray());
+                GameObject go = Instantiate(hintfab, endpoint, Quaternion.identity);
+                hintParticles.Add(go);
             }
         }
     }
 
     public void EraseHints()
     {
-        foreach (GameObject go in hintLines)
+        foreach (GameObject go in hintParticles)
         {
             Destroy(go);
         }
