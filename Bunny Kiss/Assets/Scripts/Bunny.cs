@@ -22,12 +22,17 @@ public class Bunny : Obstacle {
     public Bunny other;
     public GameObject hintfab;
 
+    public List<Vector3> hintLocs;
+    public List<GameObject> hintLines;
+
     Animator m_Animator;
 
     // Use this for initialization
     void Start () {
         speed = 2.0F;
         m_Animator = gameObject.GetComponent<Animator>();
+        hintLocs = new List<Vector3>();
+        hintLines = new List<GameObject>();
     }
 
     // Update is called once per frame
@@ -52,8 +57,33 @@ public class Bunny : Obstacle {
                 y = (int)desty;
                 Point(0, gameObject.transform.localEulerAngles.y);
             }
-        }
+        } 
 	}
+
+    public void DrawHints()
+    {
+        if (state == BunnyState.REST)
+        {
+            foreach (Vector3 endpoint in hintLocs)
+            {
+                GameObject go = Instantiate(hintfab);
+                hintLines.Add(go);
+                LineRenderer line = go.GetComponent<LineRenderer>();
+                List<Vector3> hintline = new List<Vector3>();
+                hintline.Add(Tutorial.S.RelativePos(x, y, -2));
+                hintline.Add(endpoint);
+                line.SetPositions(hintline.ToArray());
+            }
+        }
+    }
+
+    public void EraseHints()
+    {
+        foreach (GameObject go in hintLines)
+        {
+            Destroy(go);
+        }
+    }
 
     public void Point(float zangle, float yangle)
     {
@@ -147,20 +177,16 @@ public class Bunny : Obstacle {
                 } else if (challenge.values[i, y] > 0 && distance - obstaclesInWay == challenge.values[i, y])
                 {
                     Debug.Log("Can move to " + i + "," + y);
-                    GameObject go = Instantiate(hintfab);
-                    LineRenderer line = go.GetComponent<LineRenderer>();
-                    List<Vector3> hintline = new List<Vector3>();
-                    line.positionCount = 10;
-                    hintline.Add(Tutorial.S.RelativePos(x, y, -2));
-                    for (int t = 1; t < 9; t++)
-                    {
-                        hintline.Add(Tutorial.S.RelativePos(x - 0.1f * t * (distance - obstaclesInWay), y, -2));
-                    }
-                    hintline.Add(Tutorial.S.RelativePos(i, y, -2));
-                    line.SetPositions(hintline.ToArray());
-                    
+                    hintLocs.Add(Tutorial.S.RelativePos(i, y, -2));
                 }
             }
+            DrawHints();
         }
+    }
+
+    private void OnMouseUp()
+    {
+        hintLocs.Clear();
+        EraseHints();
     }
 }

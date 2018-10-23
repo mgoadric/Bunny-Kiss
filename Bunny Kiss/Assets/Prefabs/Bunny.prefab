@@ -878,6 +878,8 @@ MonoBehaviour:
   challenge: {fileID: 0}
   other: {fileID: 0}
   hintfab: {fileID: 1057616761236108, guid: 61b91629e620c21459491bcdc83288f2, type: 2}
+  hintLocs: []
+  hintLines: []
 --- !u!114 &114835854156581474
 MonoBehaviour:
   m_ObjectHideFlags: 1
