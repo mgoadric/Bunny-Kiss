@@ -52,10 +52,24 @@ public class Space : MonoBehaviour {
     {
         //Debug.Log("" + x + "," + y + ":" + value);
 
+        // No clicks allowed when the challenge is completed.
+        if (challenge.complete)
+        {
+            return;
+        }
+
         for (int i = 0; i < challenge.boardBunnies.Count; i++) 
         {
 
             Bunny b = challenge.boardBunnies[i];
+
+            // No clicking on spaces occupied by a bunny.
+            if (b.x == x && b.y == y)
+            {
+                return;
+            }
+
+            // When bunny is resting, it can move.
             if (b.state == BunnyState.REST)
             {
                 Bunny other = challenge.boardBunnies[1 - i];

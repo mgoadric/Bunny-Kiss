@@ -38,7 +38,7 @@ public class Tutorial : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        currentLevel = 8;
+        currentLevel = 0;
 
         MakeChallenge();
 
