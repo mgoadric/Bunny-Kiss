@@ -60,20 +60,7 @@ public class Bunny : Obstacle {
         } 
 	}
 
-    public void DrawHints()
-    {
-        if (state == BunnyState.REST)
-        {
-            foreach (Vector3 endpoint in hintLocs)
-            {
-                GameObject go = Instantiate(hintfab, endpoint, Quaternion.identity);
-                go.transform.parent = transform;
-                hintParticles.Add(go);
-            }
-        }
-    }
-
-    public void EraseHints()
+     public void EraseHints()
     {
         foreach (GameObject go in hintParticles)
         {
@@ -160,10 +147,8 @@ public class Bunny : Obstacle {
     private void OnMouseDown()
     {
         Debug.Log("Clicked a bunny!");
-        if (!challenge.complete)
+        if (!challenge.complete && state == BunnyState.REST)
         {
-            EraseHints();
-
             // Look left
             int obstaclesInWay = 0;
             int distance = 0;
@@ -181,7 +166,7 @@ public class Bunny : Obstacle {
                 else if (challenge.values[i, y] > 0 && distance - obstaclesInWay == challenge.values[i, y])
                 {
                     Debug.Log("Can move to " + i + "," + y);
-                    hintLocs.Add(Tutorial.S.RelativePos(i, y, -2));
+                    challenge.spaces[i, y].GetComponent<Space>().MakeHint();
                 }
             }
 
@@ -202,11 +187,9 @@ public class Bunny : Obstacle {
                 else if (challenge.values[i, y] > 0 && distance - obstaclesInWay == challenge.values[i, y])
                 {
                     Debug.Log("Can move to " + i + "," + y);
-                    hintLocs.Add(Tutorial.S.RelativePos(i, y, -2));
+                    challenge.spaces[i, y].GetComponent<Space>().MakeHint();
                 }
             }
-
-            DrawHints();
         }
     }
 }

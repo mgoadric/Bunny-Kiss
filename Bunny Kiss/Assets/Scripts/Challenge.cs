@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class Challenge : MonoBehaviour {
+public class Challenge : MonoBehaviour
+{
 
     public int moves;
     public int minvalue;
     public int maxvalue;
     public int[,] values;
+    public GameObject[,] spaces;
     public GameObject spacefab;
     public GameObject obstaclefab;
     public GameObject bunnyfab;
@@ -22,23 +24,26 @@ public class Challenge : MonoBehaviour {
 
 
     // Use this for initialization
-    void Start() {
+    void Start()
+    {
     }
 
-    public void SetUp(int x, int y, int[,] values) {
+    public void SetUp(int x, int y, int[,] values)
+    {
 
         this.values = values;
+        spaces = new GameObject[x, y];
 
         // MAKE A RANDOM LEVEL
- //       values = new int[XSIZE, YSIZE];
+        //       values = new int[XSIZE, YSIZE];
 
-//        for (int i = 0; i < XSIZE; i++)
- //       {
- //           for (int j = 0; j < YSIZE; j++)
-  //          {
-   //             values[i, j] = Random.Range(minvalue, maxvalue);
- //           }
- //       }
+        //        for (int i = 0; i < XSIZE; i++)
+        //       {
+        //           for (int j = 0; j < YSIZE; j++)
+        //          {
+        //             values[i, j] = Random.Range(minvalue, maxvalue);
+        //           }
+        //       }
 
         obstacles = new List<Obstacle>();
         boardBunnies = new List<Bunny>();
@@ -50,7 +55,7 @@ public class Challenge : MonoBehaviour {
         {
             for (int j = 0; j < h; j++)
             {
-                if (values[i,j] == 0)
+                if (values[i, j] == 0)
                 {
                     GameObject space = Instantiate<GameObject>(obstaclefab, Tutorial.S.RelativePos(i, j, 0), Quaternion.identity);
                     space.transform.parent = this.transform;
@@ -58,9 +63,11 @@ public class Challenge : MonoBehaviour {
                     ob.x = i;
                     ob.y = j;
                     obstacles.Add(ob);
-                } else if (values[i,j] > 0)
+                }
+                else if (values[i, j] > 0)
                 {
                     GameObject space = Instantiate<GameObject>(spacefab, Tutorial.S.RelativePos(i, j, 0), Quaternion.identity);
+                    spaces[i, j] = space;
                     space.transform.parent = this.transform;
                     Space script = space.GetComponent<Space>();
                     script.value = values[i, j];
@@ -68,7 +75,8 @@ public class Challenge : MonoBehaviour {
                     script.y = j;
                     script.text.GetComponent<TextMeshPro>().text = "" + script.value;
                     script.challenge = this;
-                } else if (values[i,j] == -1)
+                }
+                else if (values[i, j] == -1)
                 {
                     // Put a bunny on the board
                     GameObject space = Instantiate<GameObject>(obstaclefab, Tutorial.S.RelativePos(i, j, 0), Quaternion.identity);
@@ -112,7 +120,8 @@ public class Challenge : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update() {
+    void Update()
+    {
         if (ready && !complete)
         {
             //Debug.Log("1:" + boardBunnies[0].x + "," + boardBunnies[0].y + " 2:" + boardBunnies[1].x + "," + boardBunnies[1].y);
@@ -127,5 +136,5 @@ public class Challenge : MonoBehaviour {
                 complete = true;
             }
         }
-	}
+    }
 }

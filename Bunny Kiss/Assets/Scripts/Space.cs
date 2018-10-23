@@ -12,6 +12,7 @@ public class Space : MonoBehaviour {
     public GameObject text;
     public GameObject field;
     public Sprite background;
+    public GameObject hintfab;
  
 	// Use this for initialization
 	void Start () {
@@ -22,6 +23,13 @@ public class Space : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    public void MakeHint()
+    {
+       GameObject go = Instantiate(hintfab, Tutorial.S.RelativePos(x, y, -1), Quaternion.identity);
+       go.transform.parent = transform;
+    }
+
 
     void BunnyCheck(Bunny b, List<Obstacle> obs, int dx, int dy)
     {

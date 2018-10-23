@@ -225,6 +225,8 @@ MonoBehaviour:
   prev: {fileID: 2035919253}
   moves: {fileID: 1789741895}
   level: {fileID: 909502850}
+  XSIZE: 0
+  YSIZE: 0
 --- !u!4 &656538883
 Transform:
   m_ObjectHideFlags: 0
