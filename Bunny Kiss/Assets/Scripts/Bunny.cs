@@ -67,6 +67,7 @@ public class Bunny : Obstacle {
             foreach (Vector3 endpoint in hintLocs)
             {
                 GameObject go = Instantiate(hintfab, endpoint, Quaternion.identity);
+                go.transform.parent = transform;
                 hintParticles.Add(go);
             }
         }
@@ -159,6 +160,9 @@ public class Bunny : Obstacle {
         Debug.Log("Clicked a bunny!");
         if (!challenge.complete)
         {
+            EraseHints();
+
+            // Look left
             int obstaclesInWay = 0;
             int distance = 0;
             for (int i = x - 1; i >= 0; i--)
@@ -175,13 +179,8 @@ public class Bunny : Obstacle {
                     hintLocs.Add(Tutorial.S.RelativePos(i, y, -2));
                 }
             }
+
             DrawHints();
         }
-    }
-
-    private void OnMouseUp()
-    {
-        hintLocs.Clear();
-        EraseHints();
     }
 }
