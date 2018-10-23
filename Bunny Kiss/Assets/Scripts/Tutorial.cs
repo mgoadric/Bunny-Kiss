@@ -36,8 +36,8 @@ public class Tutorial : MonoBehaviour {
     private int XOFFSET = -3;
     private int YOFFSET = 0;
 
-    private int XSIZE;
-    private int YSIZE;
+    public int XSIZE;
+    public int YSIZE;
 
     public static Tutorial S;
 

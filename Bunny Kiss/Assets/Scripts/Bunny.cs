@@ -79,6 +79,8 @@ public class Bunny : Obstacle {
         {
             Destroy(go);
         }
+        hintParticles.Clear();
+        hintLocs.Clear();
     }
 
     public void Point(float zangle, float yangle)
@@ -171,9 +173,33 @@ public class Bunny : Obstacle {
                 if (challenge.values[i, y] == 0)
                 {
                     obstaclesInWay++;
-                } else if (other.x == i && other.y == y) {
+                }
+                else if (other.x == i && other.y == y)
+                {
                     obstaclesInWay++;
-                } else if (challenge.values[i, y] > 0 && distance - obstaclesInWay == challenge.values[i, y])
+                }
+                else if (challenge.values[i, y] > 0 && distance - obstaclesInWay == challenge.values[i, y])
+                {
+                    Debug.Log("Can move to " + i + "," + y);
+                    hintLocs.Add(Tutorial.S.RelativePos(i, y, -2));
+                }
+            }
+
+            // Look right
+            obstaclesInWay = 0;
+            distance = 0;
+            for (int i = x + 1; i < Tutorial.S.XSIZE; i++)
+            {
+                distance++;
+                if (challenge.values[i, y] == 0)
+                {
+                    obstaclesInWay++;
+                }
+                else if (other.x == i && other.y == y)
+                {
+                    obstaclesInWay++;
+                }
+                else if (challenge.values[i, y] > 0 && distance - obstaclesInWay == challenge.values[i, y])
                 {
                     Debug.Log("Can move to " + i + "," + y);
                     hintLocs.Add(Tutorial.S.RelativePos(i, y, -2));
