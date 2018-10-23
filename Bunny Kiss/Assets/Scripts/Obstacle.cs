@@ -10,6 +10,8 @@ public class Obstacle : MonoBehaviour {
     public int x;
     public int y;
 
+    public GameObject mysprite;
+
     // Use this for initialization
     void Start () {
 		

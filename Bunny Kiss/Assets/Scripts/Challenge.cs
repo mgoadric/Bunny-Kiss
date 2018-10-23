@@ -15,6 +15,7 @@ public class Challenge : MonoBehaviour {
     public GameObject obstaclefab;
     public GameObject bunnyfab;
     public GameObject heartsfab;
+    public Sprite burrowSprite;
 
     public List<Bunny> boardBunnies;
     public List<Obstacle> obstacles;
@@ -74,6 +75,10 @@ public class Challenge : MonoBehaviour {
                 } else if (values[i,j] == -1)
                 {
                     // Put a bunny on the board
+                    GameObject space = Instantiate<GameObject>(obstaclefab, new Vector3(i - w / 2, j - h / 2, 0), Quaternion.identity);
+                    space.transform.parent = this.transform;
+                    SpriteRenderer sr = space.GetComponent<Obstacle>().mysprite.GetComponent<SpriteRenderer>();
+                    sr.sprite = burrowSprite;
                     MakeBunny(i, j, bunnyfab);
                 }
             }
