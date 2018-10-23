@@ -78,7 +78,7 @@ public class Space : MonoBehaviour {
             }
 
             // When bunny is resting, it can move.
-            if (b.state == BunnyState.REST)
+            if (challenge.BunniesQuiet())
             {
                 Bunny other = b.other;
 

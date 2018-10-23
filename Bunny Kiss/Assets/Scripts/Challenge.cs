@@ -137,4 +137,9 @@ public class Challenge : MonoBehaviour
             }
         }
     }
+
+    public bool BunniesQuiet()
+    {
+        return (boardBunnies != null && boardBunnies[0].state != BunnyState.MOVING && boardBunnies[1].state != BunnyState.MOVING);
+    }
 }
