@@ -268,6 +268,7 @@ GameObject:
   - component: {fileID: 4791122561688968}
   - component: {fileID: 114796992751936480}
   - component: {fileID: 95087738883777144}
+  - component: {fileID: 61629536074471252}
   m_Layer: 0
   m_Name: Bunny
   m_TagString: Untagged
@@ -558,6 +559,31 @@ Transform:
   m_Father: {fileID: 4298651496010548}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &61629536074471252
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1899757479781602}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!95 &95087738883777144
 Animator:
   serializedVersion: 3
@@ -839,13 +865,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8662675a16e4f50479f152985bab589e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startx: 0
+  starty: 0
   x: 0
   y: 0
+  mysprite: {fileID: 0}
   destx: 0
   desty: 0
   speed: 0
   startTime: 0
   state: 0
+  challenge: {fileID: 0}
+  other: {fileID: 0}
 --- !u!114 &114835854156581474
 MonoBehaviour:
   m_ObjectHideFlags: 1

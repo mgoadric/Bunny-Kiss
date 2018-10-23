@@ -18,6 +18,9 @@ public class Bunny : Obstacle {
 
     public BunnyState state = BunnyState.REST;
 
+    public Challenge challenge;
+    public Bunny other;
+
     Animator m_Animator;
 
     // Use this for initialization
@@ -123,5 +126,28 @@ public class Bunny : Obstacle {
         m_Animator.SetBool("kiss", false);
         startTime = 0;
 
+    }
+
+    private void OnMouseDown()
+    {
+        Debug.Log("Clicked a bunny!");
+        if (!challenge.complete)
+        {
+            int obstaclesInWay = 0;
+            int distance = 0;
+            for (int i = x - 1; i >= 0; i--)
+            {
+                distance++;
+                if (challenge.values[i, y] == 0)
+                {
+                    obstaclesInWay++;
+                } else if (other.x == i && other.y == y) {
+                    obstaclesInWay++;
+                } else if (challenge.values[i, y] > 0 && distance - obstaclesInWay == challenge.values[i, y])
+                {
+                    Debug.Log("Can move to " + i + "," + y);
+                }
+            }
+        }
     }
 }

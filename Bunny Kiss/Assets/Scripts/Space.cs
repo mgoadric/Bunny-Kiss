@@ -72,7 +72,7 @@ public class Space : MonoBehaviour {
             // When bunny is resting, it can move.
             if (b.state == BunnyState.REST)
             {
-                Bunny other = challenge.boardBunnies[1 - i];
+                Bunny other = b.other;
 
                 // Look in all four directions for any bunnies that can jump.
                 List<Obstacle> obs = new List<Obstacle>();

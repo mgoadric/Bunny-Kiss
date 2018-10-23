@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class Challenge : MonoBehaviour {
 
-     public int moves;
+    public int moves;
     public int minvalue;
     public int maxvalue;
-    private int[,] values;
+    public int[,] values;
     public GameObject spacefab;
     public GameObject obstaclefab;
     public GameObject bunnyfab;
@@ -80,6 +80,11 @@ public class Challenge : MonoBehaviour {
             }
         }
 
+        for (int i = 0; i < boardBunnies.Count; i++)
+        {
+            boardBunnies[i].other = boardBunnies[1 - i];
+        }
+
         ready = true;
         complete = false;
     }
@@ -90,6 +95,7 @@ public class Challenge : MonoBehaviour {
         bunny.transform.parent = this.transform;
 
         Bunny b = bunny.GetComponent<Bunny>();
+        b.challenge = this;
         b.StartAt(x, y);
         boardBunnies.Add(b);
         return b;
