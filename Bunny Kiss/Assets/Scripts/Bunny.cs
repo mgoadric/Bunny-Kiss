@@ -8,7 +8,8 @@ public enum BunnyState
     REST, READY, MOVING
 }
 
-public class Bunny : Obstacle {
+public class Bunny : Obstacle
+{
 
     public float destx;
     public float desty;
@@ -28,7 +29,8 @@ public class Bunny : Obstacle {
     Animator m_Animator;
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         speed = 2.0F;
         m_Animator = gameObject.GetComponent<Animator>();
         hintLocs = new List<Vector3>();
@@ -36,7 +38,8 @@ public class Bunny : Obstacle {
     }
 
     // Update is called once per frame
-    void Update () {
+    void Update()
+    {
 
         if (state == BunnyState.MOVING)
         {
@@ -57,10 +60,10 @@ public class Bunny : Obstacle {
                 y = (int)desty;
                 Point(0, gameObject.transform.localEulerAngles.y);
             }
-        } 
-	}
+        }
+    }
 
-     public void EraseHints()
+    public void EraseHints()
     {
         foreach (GameObject go in hintParticles)
         {
@@ -188,6 +191,50 @@ public class Bunny : Obstacle {
                 {
                     Debug.Log("Can move to " + i + "," + y);
                     challenge.spaces[i, y].GetComponent<Space>().MakeHint();
+                }
+            }
+
+
+
+            // Look up
+            obstaclesInWay = 0;
+            distance = 0;
+            for (int j = y + 1; j < Tutorial.S.YSIZE; j++)
+            {
+                distance++;
+                if (challenge.values[x, j] == 0)
+                {
+                    obstaclesInWay++;
+                }
+                else if (other.x == x && other.y == j)
+                {
+                    obstaclesInWay++;
+                }
+                else if (challenge.values[x, j] > 0 && distance - obstaclesInWay == challenge.values[x, j])
+                {
+                    Debug.Log("Can move to " + x + "," + j);
+                    challenge.spaces[x, j].GetComponent<Space>().MakeHint();
+                }
+            }
+
+            // Look down
+            obstaclesInWay = 0;
+            distance = 0;
+            for (int j = y - 1; j >= 0; j--)
+            {
+                distance++;
+                if (challenge.values[x, j] == 0)
+                {
+                    obstaclesInWay++;
+                }
+                else if (other.x == x && other.y == j)
+                {
+                    obstaclesInWay++;
+                }
+                else if (challenge.values[x, j] > 0 && distance - obstaclesInWay == challenge.values[x, j])
+                {
+                    Debug.Log("Can move to " + x + "," + j);
+                    challenge.spaces[x, j].GetComponent<Space>().MakeHint();
                 }
             }
         }
