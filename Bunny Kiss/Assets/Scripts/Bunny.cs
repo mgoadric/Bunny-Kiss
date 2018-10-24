@@ -23,9 +23,6 @@ public class Bunny : Obstacle
     public Bunny other;
     public GameObject hintfab;
 
-    public List<Vector3> hintLocs;
-    public List<GameObject> hintParticles;
-
     Animator m_Animator;
 
     // Use this for initialization
@@ -33,8 +30,6 @@ public class Bunny : Obstacle
     {
         speed = 2.0F;
         m_Animator = gameObject.GetComponent<Animator>();
-        hintLocs = new List<Vector3>();
-        hintParticles = new List<GameObject>();
     }
 
     // Update is called once per frame
@@ -61,16 +56,6 @@ public class Bunny : Obstacle
                 Point(0, gameObject.transform.localEulerAngles.y);
             }
         }
-    }
-
-    public void EraseHints()
-    {
-        foreach (GameObject go in hintParticles)
-        {
-            Destroy(go);
-        }
-        hintParticles.Clear();
-        hintLocs.Clear();
     }
 
     public void Point(float zangle, float yangle)
