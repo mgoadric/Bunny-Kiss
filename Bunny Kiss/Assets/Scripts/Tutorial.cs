@@ -12,8 +12,9 @@ public class Tutorial : MonoBehaviour {
     public GameObject challengefab;
 
     private readonly string[] levels = new string[]
-        { "2\n3\n1,1,-1\n-1,2,1",
+        { "2\n2\n-1,1\n0,-1",
           "2\n3\n2,1,-1\n-1,1,2",
+          "2\n3\n1,1,-1\n-1,2,1",
           "3\n3\n-1,2,0\n1,1,1\n0,2,-1",
           "3\n3\n0,1,-1\n1,2,2\n-1,1,2",
           "3\n3\n1,0,-1\n1,1,2\n-1,2,0",
