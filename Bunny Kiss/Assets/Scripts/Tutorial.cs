@@ -51,7 +51,6 @@ public class Tutorial : MonoBehaviour {
     void Start()
     {
         currentLevel = 0;
-        level.text = "" + (currentLevel + 1);
         MakeChallenge();
 
     }
@@ -120,6 +119,8 @@ public class Tutorial : MonoBehaviour {
 
     void MakeChallenge()
     {
+        level.text = "" + (currentLevel + 1);
+
         StreamReader reader = new StreamReader(GenerateStreamFromString(levels[currentLevel]));
         char[] delim = { ',' };
         XSIZE = int.Parse(reader.ReadLine());
