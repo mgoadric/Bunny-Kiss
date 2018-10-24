@@ -53,7 +53,7 @@ public class Tutorial : MonoBehaviour {
     void Start()
     {
         currentLevel = 0;
-        highestLevel = 0;
+        highestLevel = -1;
         MakeChallenge();
 
     }
@@ -63,9 +63,13 @@ public class Tutorial : MonoBehaviour {
         if (challenge)
         {
             moves.text = "" + challenge.moves;
-            if (currentLevel < highestLevel || challenge.complete)
+            if (currentLevel <= highestLevel || challenge.complete)
             {
                 next.GetComponent<Button>().interactable = true;
+                if (currentLevel > highestLevel)
+                {
+                    highestLevel = currentLevel;
+                }
             } 
             else
             {
@@ -99,13 +103,10 @@ public class Tutorial : MonoBehaviour {
 
     public void NextChallenge()
     {
-        if (challenge && (currentLevel < highestLevel || challenge.complete))
+        if (challenge && (currentLevel <= highestLevel || challenge.complete))
         {
             currentLevel++;
-            if (currentLevel > highestLevel)
-            {
-                highestLevel = currentLevel;
-            }
+
             level.text = "" + (currentLevel + 1);
             Destroy(challenge.gameObject);
             MakeChallenge();
