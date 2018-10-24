@@ -142,4 +142,9 @@ public class Challenge : MonoBehaviour
     {
         return (boardBunnies != null && boardBunnies[0].state != BunnyState.MOVING && boardBunnies[1].state != BunnyState.MOVING);
     }
+
+    public bool Unsolvable()
+    {
+        return boardBunnies[0].AllMoves().Count == 0 && boardBunnies[1].AllMoves().Count == 0;
+    }
 }

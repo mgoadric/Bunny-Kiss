@@ -59,7 +59,7 @@ MonoBehaviour:
     type: 2}
   bunnyfab: {fileID: 1899757479781602, guid: 6f1f866a6a2f5b64987b08608738d90f, type: 2}
   heartsfab: {fileID: 1046740080797886, guid: fbbb45b8333bacd46bf79ad3205d458a, type: 2}
-  burrowSprite: {fileID: 21300000, guid: 5a8decfa9c284d54884387b5236b1cd8, type: 3}
+  burrowSprite: {fileID: 21300000, guid: 96ad595b7b94dd74e84272119912940b, type: 3}
   boardBunnies: []
   obstacles: []
   complete: 0
