@@ -621,7 +621,7 @@ PlayerSettings:
     Hub: 0
     UNet: 0
   facebookSdkVersion: 7.9.4
-  apiCompatibilityLevel: 2
+  apiCompatibilityLevel: 3
   cloudProjectId: dd40f137-5f73-48d0-b379-8e3af7554042
   projectName: Bunny Kiss
   organizationId: mark-goadrich

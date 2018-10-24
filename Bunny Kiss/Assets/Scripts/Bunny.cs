@@ -21,8 +21,9 @@ public class Bunny : Obstacle
 
     public Challenge challenge;
     public Bunny other;
-    public GameObject hintfab;
+    public AudioClip boing;
 
+    AudioSource source;
     Animator m_Animator;
 
     // Use this for initialization
@@ -30,6 +31,7 @@ public class Bunny : Obstacle
     {
         speed = 2.0F;
         m_Animator = gameObject.GetComponent<Animator>();
+        source = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -80,6 +82,7 @@ public class Bunny : Obstacle
             state = BunnyState.MOVING;
             startTime = Time.time;
             m_Animator.SetTrigger("jump");
+            source.PlayOneShot(boing);
 
             if (kiss)
             {
