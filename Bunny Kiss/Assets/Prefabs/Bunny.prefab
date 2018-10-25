@@ -973,7 +973,9 @@ MonoBehaviour:
   state: 0
   challenge: {fileID: 0}
   other: {fileID: 0}
-  boing: {fileID: 8300000, guid: e781dbd503ba6794c9c19b9472b80a7e, type: 3}
+  hintfab: {fileID: 0}
+  hintLocs: []
+  hintParticles: []
 --- !u!114 &114835854156581474
 MonoBehaviour:
   m_ObjectHideFlags: 1
