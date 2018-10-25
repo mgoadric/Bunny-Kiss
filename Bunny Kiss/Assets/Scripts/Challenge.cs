@@ -17,6 +17,10 @@ public class Challenge : MonoBehaviour
     public GameObject heartsfab;
     public Sprite burrowSprite;
 
+    public AudioClip hooray;
+
+    AudioSource source;
+
     public List<Bunny> boardBunnies;
     public List<Obstacle> obstacles;
     public bool complete;
@@ -26,6 +30,7 @@ public class Challenge : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        source = GetComponent<AudioSource>();
     }
 
     public void SetUp(int x, int y, int[,] values)
@@ -128,6 +133,7 @@ public class Challenge : MonoBehaviour
             if (boardBunnies[0].Equals(boardBunnies[1]))
             {
                 Debug.Log("Hooray, kiss!");
+                source.PlayOneShot(hooray);
                 GameObject hearts = Instantiate<GameObject>(heartsfab, Tutorial.S.RelativePos(boardBunnies[0].x, boardBunnies[0].y, 0), Quaternion.identity);
                 hearts.transform.parent = this.transform;
 
