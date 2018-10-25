@@ -54,7 +54,7 @@ public class Tutorial : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        currentLevel = 0;
+        currentLevel = 10;
         highestLevel = -1;
         MakeChallenge();
 
@@ -65,7 +65,7 @@ public class Tutorial : MonoBehaviour {
         if (challenge)
         {
             moves.text = "" + challenge.moves;
-            if (currentLevel <= highestLevel || challenge.complete)
+            if (currentLevel < levels.Length - 1 && (currentLevel <= highestLevel || challenge.complete))
             {
                 next.GetComponent<Button>().interactable = true;
                 if (currentLevel > highestLevel)
