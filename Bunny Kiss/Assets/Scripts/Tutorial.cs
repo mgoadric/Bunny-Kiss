@@ -12,19 +12,20 @@ public class Tutorial : MonoBehaviour {
     public GameObject challengefab;
 
     private readonly string[] levels = new string[]
-        { "2\n2\n-1,1\n0,-1",
-          "2\n3\n2,1,-1\n-1,1,2",
-          "2\n3\n1,1,-1\n-1,2,1",
-          "3\n3\n-1,2,0\n1,1,1\n0,2,-1",
-          "3\n3\n0,1,-1\n1,2,2\n-1,1,2",
-          "3\n3\n1,0,-1\n1,1,2\n-1,2,0",
-          "3\n3\n-1,2,2\n2,1,0\n-1,1,1",
-          "3\n3\n1,2,-1\n1,2,1\n-1,1,0",
-          "3\n4\n2,1,3,-1\n1,3,2,0\n-1,2,1,2",
-          "3\n4\n3,1,2,-1\n0,1,2,1\n-1,1,0,0",
-          "3\n4\n-1,3,1,2\n1,2,3,3\n0,1,2,-1",
-          "4\n4\n-1,2,3,2\n3,0,1,0\n3,0,1,1\n2,1,2,-1",
-         // "4\n4\n-1,2,1,1\n2,1,2,2\n2,2,3,3\n-1,0,1,3",
+        { "2\n2\n-1,1\n0,-1\nHop your bunnies to the same space so they can kiss! Tap the 1 to move the bunnies.",
+          "2\n3\n0,1,-1\n-1,1,0\nGreat Work! Try it again!",
+          "3\n3\n-1,0,0\n1,1,1\n0,0,-1\nKeep hopping down the open path.",
+          "2\n3\n2,1,-1\n-1,1,2\nYou can jump multiple spaces at once if the number you tap equals the distance of the jump.",
+           "2\n3\n1,1,-1\n-1,2,1\nWatch out to not get your bunnies stuck! Use the RESET button to try again.",
+         "3\n3\n0,1,-1\n1,2,2\n-1,1,2\nShort hops aren't always the best way to get together.",
+          "3\n3\n1,0,-1\n1,1,2\n-1,2,0\nBunnies can jump over hedges for free. Try it now!",
+          "3\n3\n-1,2,2\n2,1,0\n-1,1,1\nTap the bunnies to see where they can hop!",
+          "3\n3\n1,2,-1\n1,2,1\n-1,1,0\nBunnies can jump over other bunnies also for free!",
+          "3\n4\n2,1,3,-1\n1,3,2,0\n-1,2,1,2\nOK, you're all set for the rest of the puzzles! Good luck!",
+          "3\n4\n3,1,2,-1\n0,1,2,1\n-1,1,0,0\n",
+          "3\n4\n-1,3,1,2\n1,2,3,3\n0,1,2,-1\n",
+          "4\n4\n-1,2,3,2\n3,0,1,0\n3,0,1,1\n2,1,2,-1\nLast puzzle of the demo version for now, more to come soon!",
+         // "4\n4\n-1,2,1,1\n2,1,2,2\n2,2,3,3\n-1,0,1,3\n",
 
         };
 
@@ -36,8 +37,9 @@ public class Tutorial : MonoBehaviour {
     public GameObject prev;
     public TextMeshProUGUI moves;
     public TextMeshProUGUI level;
-    private int XOFFSET = -3;
-    private int YOFFSET = 0;
+    public TextMeshProUGUI tuts;
+    private readonly int XOFFSET = -3;
+    private readonly int YOFFSET = 0;
 
     public int XSIZE;
     public int YSIZE;
@@ -143,6 +145,7 @@ public class Tutorial : MonoBehaviour {
                 board[i, j] = int.Parse(poss[j]);
             }
         }
+        tuts.text = reader.ReadLine();
         reader.Close();
 
         GameObject go = Instantiate(challengefab, new Vector3(-4, 0, 0), Quaternion.identity);
