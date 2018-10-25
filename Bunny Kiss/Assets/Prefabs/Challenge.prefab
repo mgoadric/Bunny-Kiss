@@ -55,11 +55,11 @@ MonoBehaviour:
   minvalue: 2
   maxvalue: 3
   spacefab: {fileID: 1214494948467134, guid: 6ad669aa61c1f2848a3a752171ae50d1, type: 2}
-  obstaclefab: {fileID: 1020297952649042, guid: 5317a897d53552d4a99ec505eeddf73c,
+  obstaclefab: {fileID: 1637073416507802, guid: 5317a897d53552d4a99ec505eeddf73c,
     type: 2}
   bunnyfab: {fileID: 1899757479781602, guid: 6f1f866a6a2f5b64987b08608738d90f, type: 2}
   heartsfab: {fileID: 1046740080797886, guid: fbbb45b8333bacd46bf79ad3205d458a, type: 2}
-  burrowSprite: {fileID: 21300000, guid: 96ad595b7b94dd74e84272119912940b, type: 3}
+  burrowSprite: {fileID: 21300000, guid: 3aaf0ed087623db44a6e3195ddd81aab, type: 3}
   boardBunnies: []
   obstacles: []
   complete: 0
